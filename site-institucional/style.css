@@ -113,6 +113,34 @@ body{
 	outline: none;
 }
 
+.menu_btn {
+	display: none;
+	cursor: pointer;
+	/* transition: all 0.2s linear; */
+  } 
+.menu_btn > div {
+	width: 45px;
+	height: 7px;
+	background-color: #f9f9f9d3;
+	margin: 8px 0px;
+	border-radius: 10px;
+}
+
+@media screen and (max-width: 750px) {
+	.header{
+		justify-content: space-between;
+	}
+	.logo{
+		width: 90%;
+	}
+	.ul_header{
+		display: none;
+	}
+	.menu_btn{
+		display: block;
+	}
+}
+
 /* .btn_header_link:hover {
 	color: #7b21c1;
 	transition: 0.5s;
@@ -211,13 +239,143 @@ body{
 	/* padding-left: 5%; */
 	/* padding-bottom: 25px; */
 }
+@media screen and (max-width: 750px) {
+	.div_head_text{
+		width: 100%;
+	}
+	.div_head_img{
+		display: none;
+	}
+}
+
+
+/* Sessão sobre nós */
+
+.sobre_nos{
+	width: 100%;
+    height: 140vh;
+	padding: 10vh 10%;
+	/* color: #17195D; */
+}
+.sobre_nos h1{
+	width: 100%;
+	height: 5vh;
+	font-size: 4rem;
+	font-weight: 400;
+	text-align: center;
+	color: #17195D;
+}
+.sobre_nos_container{
+	width: 100%;
+	display: flex;
+	justify-content: space-evenly;
+
+}
+.valores {
+	width: 40%;
+	height: 100vh;
+	display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.valores li{
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	width: 100%;
+	height: 18vh;
+	color: #17195D;
+}
+.valores li img{
+	height: 10vh;
+	margin-right: 2vw;
+}
+.valores li p{
+	width: 65%;
+	color: #17195D;
+	font-size: 1.5rem;
+	font-weight: 700;
+	z-index: 1;
+	/* padding-left: 3%; */
+
+}
+.valor_01{
+	margin-left: 35%;
+}
+.valor_03{
+	margin-left: 10%;
+}
+.valores .valor_04{
+    width: 110%;
+    margin-left: 68%;
+	justify-content: space-between;
+}
+.valores .valor_04 p{
+    width: 87%;
+}
+
+.sobre_nos_img{
+	width: 50%;
+	height: 80vh;
+}
+#img_sobre_nos{
+	/* height: 120vh; */
+	width: 48vw;
+	margin: -2vh 0 0 -5vw;
+}
+
+/* Responsividade da seção sobre nós */
+@media screen and (max-width: 750px) {
+	.sobre_nos{
+		padding: 5vh 10%;
+		height: auto;
+	}
+	.sobre_nos h1{
+		height: 15vh;
+	}
+	.sobre_nos_container{
+		flex-direction: column;
+	}
+
+	.valores{
+		flex-direction: row;
+		flex-wrap: wrap;
+		width: 100%;
+		height: auto;
+
+	}
+	.valores li{
+		display: flex;
+		flex-direction: column;
+		margin: 0;
+		width: 50%;
+		height: auto;
+	}
+	.valores .valor_04{
+		width: 50%;
+		margin: 0;
+	}
+	.valores li img{
+		margin: 0;
+	}
+	.valores li p{
+		margin: 4vh 0;
+		font-size: 1.2rem;
+		text-align: center;
+		height: 20vh;
+	}
+	.sobre_nos_img{
+		display: none;
+	}
+}
 
 /* Produto */
 
 .produto{
 	background-image: url(img/produto_fundo.png);
 	background-size: cover;
-	padding: 30px 10%;
+	padding: 5vh 10%;
 }
 .bloco_produto{
 	display: flex;
@@ -237,9 +395,11 @@ body{
     }
 	.produto h1{
 		font-size: 2rem;
+		text-align: center;
 	}
 	.bloco_produto p{
-		font-size: 1rem;
+		text-align: center;
+		font-size: 1.2rem;
 	}
 	.bloco_produto{
 		flex-direction: column;
@@ -255,152 +415,6 @@ body{
 
 .contato p, .titulo_contato{
 	color: #17195D;
-}
-
-/* Sessão sobre nós */
-
-.sobre_nos{
-	width: 100%;
-    height: 150vh;
-	padding: 10vh 10%;
-	/* color: #17195D; */
-}
-.sobre_nos h1{
-	width: 100%;
-	height: 15vh;
-	font-size: 4rem;
-	font-weight: 400;
-	text-align: center;
-	color: #17195D;
-}
-.sobre_nos_container{
-	width: 100%;
-	display: flex;
-
-}
-.valores {
-	width: 39%;
-	height: 100vh;
-	display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-}
-.valores li{
-	display: flex;
-	justify-content: space-evenly;
-	align-items: center;
-	width: 100%;
-	height: 18vh;
-	color: #17195D;
-}
-.valores li img{
-	height: 10vh;
-	margin-right: 2vw;
-}
-.valores li p{
-	width: 65%;
-	color: #17195D;
-	font-size: 1.5rem;
-	font-weight: 700;
-	z-index: 1;
-	/* padding-left: 3%; */
-
-}
-.valor_01{
-	margin-left: 35%;
-}
-.valor_03{
-	margin-left: 10%;
-}
-.valores .valor_04{
-    width: 110%;
-    margin-left: 68%;
-	justify-content: space-between;
-}
-.valores .valor_04 p{
-    width: 87%;
-}
-
-.sobre_nos_img{
-	width: 40%;
-	height: 80vh;
-}
-#img_sobre_nos{
-	margin: -11vh 0 0 -5vw;
-}
-
-/* Sessão sobre nós */
-
-.sobre_nos{
-	width: 100%;
-    height: 150vh;
-	padding: 10vh 10%;
-	/* color: #17195D; */
-}
-.sobre_nos h1{
-	width: 100%;
-	height: 15vh;
-	font-size: 4rem;
-	font-weight: 400;
-	text-align: center;
-	color: #17195D;
-}
-.sobre_nos_container{
-	width: 100%;
-	display: flex;
-
-}
-.valores {
-	width: 39%;
-	height: 100vh;
-	display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-}
-.valores li{
-	display: flex;
-	justify-content: space-evenly;
-	align-items: center;
-	width: 100%;
-	height: 18vh;
-	color: #17195D;
-}
-.valores li img{
-	height: 10vh;
-	margin-right: 2vw;
-}
-.valores li p{
-	width: 65%;
-	color: #17195D;
-	font-size: 1.5rem;
-	font-weight: 700;
-	z-index: 1;
-	/* padding-left: 3%; */
-
-}
-.valor_01{
-	margin-left: 35%;
-}
-.valor_03{
-	margin-left: 10%;
-}
-.valores .valor_04{
-    width: 110%;
-    margin-left: 68%;
-	justify-content: space-between;
-}
-.valores .valor_04 p{
-    width: 87%;
-}
-
-.sobre_nos_img{
-	width: 40%;
-	height: 80vh;
-}
-#img_sobre_nos{
-	margin: -11vh 0 0 -5vw;
 }
 
 .titulo_contato{
@@ -457,6 +471,34 @@ body{
 	border: 2px solid #17195D;
 	transition: 0.5s;
 	cursor: pointer;
+}
+@media screen and (max-width: 750px) {
+	.div_infos_contato{
+		height: 70vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+		align-items: start;
+	}
+	.info{
+		display: flex;
+		width: 100%;
+		height: auto;
+	}
+	.info img{
+		margin: 0 1%;
+	}
+	.input_contato, .mensagem_contato{
+		width: 100%;
+		margin: 10px 10px;
+	}
+	.input_contato{
+		height: 40px;
+	}
+	#enviar{
+		width: 100%;
+		margin: 10px 10px 0 10px;
+	}
 }
 
 /* Footer */
@@ -526,6 +568,30 @@ footer p, footer a{
 	justify-content:space-between;
 }
 
+@media screen and (max-width: 750px) {
+	.section_desc_footer{
+		height: 25vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+	}
+	.section_desc_footer p{
+		line-height: 1.2rem;
+	}
+	.section_links_footer{
+		height: 25vh;
+	}
+	.redes-sociais{
+		justify-content: space-evenly;
+		margin: 5px 0;
+	}
+	.section_contact_footer{
+		height: 15vh;
+		align-items: center;
+		justify-content: space-evenly;
+		margin: 5px;
+	}
+}
 
 
 /* @media (max-width: 750px) {
