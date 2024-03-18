@@ -207,10 +207,67 @@ body{
 	/* padding-bottom: 25px; */
 }
 
-.contato p, .contato h1{
+/* Contato */
+
+.contato p, .titulo_contato{
 	color: #17195D;
 }
 
+.titulo_contato{
+	text-align: center;
+	margin: 30px 10%;
+}
+
+.contato{
+	padding: 0 10% 80px;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+
+.div_infos_contato{
+	flex-grow: 1;
+	flex-basis: 300px;
+}
+
+.div_inputs_contato{
+	align-items: center;
+	flex-grow: 1;
+	flex-basis: 300px;
+	display: flex;
+	flex-direction: column;
+}
+
+.input_contato{
+	width: 80%;
+	margin: 10px 20px;
+	border: 2px solid #17195D;
+	height: 33px;
+	color: #17195D;
+	padding: 10px;
+}
+.mensagem_contato{
+	width: 80%;
+	margin: 10px 20px;
+	border: 2px solid #17195D;
+	height: 250px;
+	color: #17195D;
+	padding: 10px;
+}
+.div_inputs_contato button{
+	color: white;
+	background-color: #17195D;
+	width: 80%;
+	height: 40px;
+	box-shadow: 1px 1px 3px black;
+}
+.div_inputs_contato button:hover{
+	color: #17195D;
+	background-color: rgba(255, 255, 255, 0);
+	border: 2px solid #17195D;
+	transition: 0.5s;
+	cursor: pointer;
+}
 
 /* Footer */
 
@@ -258,10 +315,16 @@ footer p, footer a{
 	flex-direction: column;
 	justify-content:space-between;
 }
+
 .section_links_footer a, .section_links_footer h1{
 	text-align: center;
 	margin: 3px 0;
 }
+
+.section_links_footer a:hover::after{
+	width: 100%;
+}
+
 .section_links_footer div{
 	display: flex;
 	justify-content: space-around;
