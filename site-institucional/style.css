@@ -206,6 +206,12 @@ body{
 	/* padding-left: 5%; */
 	/* padding-bottom: 25px; */
 }
+
+.contato p, .contato h1{
+	color: #17195D;
+}
+
+
 /* Footer */
 
 
@@ -266,6 +272,7 @@ footer p, footer a{
 	flex-direction: column;
 	justify-content:space-between;
 }
+
 
 
 /* @media (max-width: 750px) {
