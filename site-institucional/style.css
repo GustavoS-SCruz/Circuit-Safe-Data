@@ -207,6 +207,45 @@ body{
 	/* padding-bottom: 25px; */
 }
 
+/* Produto */
+
+.produto{
+	background-image: url(img/produto_fundo.png);
+	background-size: cover;
+	padding: 30px 10%;
+}
+.bloco_produto{
+	display: flex;
+	flex-direction: row;
+	margin: 20px 0;
+}
+.bloco_produto p{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+@media screen and (max-width: 750px) {
+    .bloco_produto img {
+      height: 200px;
+	  width: 200px; /* Reduz altura para telas menores */
+    }
+	.produto h1{
+		font-size: 2rem;
+	}
+	.bloco_produto p{
+		font-size: 1rem;
+	}
+	.bloco_produto{
+		flex-direction: column;
+		align-items: center;
+	}
+	.blocoproduto2{
+		flex-direction: column-reverse;
+	}
+
+  }
+
 /* Contato */
 
 .contato p, .titulo_contato{
