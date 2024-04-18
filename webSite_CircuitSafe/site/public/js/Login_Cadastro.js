@@ -16,17 +16,14 @@ function cadastrar() {
 
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
-    var nomeVar = nome_usuario.value;
     var emailVar = email_usuario.value;
     var senhaVar = senha_input.value;
-    // var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    // var empresaVar = listaEmpresas.value
+    var cpfVar = cpf_usuario.value;
+
     if (
-      nomeVar == "" ||
+      cpfVar == "" ||
       emailVar == "" ||
       senhaVar == ""
-      // confirmacaoSenhaVar == "" ||
-      // empresaVar == ""
     ) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
@@ -47,10 +44,9 @@ function cadastrar() {
       body: JSON.stringify({
         // crie um atributo que recebe o valor recuperado aqui
         // Agora vá para o arquivo routes/usuario.js
-        nomeServer: nomeVar,
+        cpfServer: cpfVar,
         emailServer: emailVar,
         senhaServer: senhaVar,
-        // empresaServer: empresaVar
       }),
     })
       .then(function (resposta) {
