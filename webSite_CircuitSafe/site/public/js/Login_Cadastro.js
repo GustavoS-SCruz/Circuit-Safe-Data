@@ -11,6 +11,22 @@ loginBtn.addEventListener('click', () => {
     container.classList.remove("active");
 });
 
+function logar(){
+  var usuario = email_usuario_login.value;
+  var senha = senha_usuario_login.value;
+
+  if(usuario == "circuit_safe" || senha == "urubu100"){
+    let params = new URLSearchParams();
+    params.append('username', usuario);
+    params.append('password', senha);
+
+    window.location = "./dashboard/index.html?" + params.toString();
+  } else {
+    alert("Usuário ou senha inválidos!");
+  }
+
+}
+
 function cadastrar() {
     aguardar();
 
