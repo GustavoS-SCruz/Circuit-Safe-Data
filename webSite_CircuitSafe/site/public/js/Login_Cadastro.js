@@ -20,11 +20,7 @@ function cadastrar() {
     var senhaVar = senha_input.value;
     var cpfVar = cpf_usuario.value;
 
-    if (
-      cpfVar == "" ||
-      emailVar == "" ||
-      senhaVar == ""
-    ) {
+    if (cpfVar == "" || emailVar == "" || senhaVar == "") {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
         "(Mensagem de erro para todos os campos em branco)";
