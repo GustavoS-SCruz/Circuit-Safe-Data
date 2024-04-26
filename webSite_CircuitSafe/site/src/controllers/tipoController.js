@@ -1,47 +1,55 @@
-var empresaModel = require("../models/empresaModel");
+var tipoModel = require("../models/tipoModel");
 
-function buscarPorCnpj(req, res) {
-  var cnpj = req.query.cnpj;
+function criarTipo(req, res) {
+    var nome_tipo = req.body.nome_tipo;
 
-  empresaModel.buscarPorCnpj(cnpj).then((resultado) => {
-    res.status(200).json(resultado);
-  });
+    tipoModel.criarTipo(nome_tipo)
+        .then(function(resultados) {
+            res.json(resultados);
+        })
+        .catch(function(erro) {
+            res.status(500).json(erro);
+        });
 }
 
-function listar(req, res) {
-  empresaModel.listar().then((resultado) => {
-    res.status(200).json(resultado);
-  });
+function listarTipos(req, res) {
+    tipoModel.listarTipos()
+        .then(function(resultados) {
+            res.json(resultados);
+        })
+        .catch(function(erro) {
+            res.status(500).json(erro);
+        });
 }
 
-function buscarPorId(req, res) {
-  var id = req.params.id;
+function atualizarTipo(req, res) {
+    var id_tipo = req.body.id_tipo;
+    var nome_tipo = req.body.nome_tipo;
 
-  empresaModel.buscarPorId(id).then((resultado) => {
-    res.status(200).json(resultado);
-  });
+    tipoModel.atualizarTipo(id_tipo, nome_tipo)
+        .then(function(resultados) {
+            res.json(resultados);
+        })
+        .catch(function(erro) {
+            res.status(500).json(erro);
+        });
 }
 
-function cadastrar(req, res) {
-  var cnpj = req.body.cnpj;
-  var razaoSocial = req.body.razaoSocial;
+function deletarTipo(req, res) {
+    var id_tipo = req.body.id_tipo;
 
-  empresaModel.buscarPorCnpj(cnpj).then((resultado) => {
-    if (resultado.length > 0) {
-      res
-        .status(401)
-        .json({ mensagem: `a empresa com o cnpj ${cnpj} já existe` });
-    } else {
-      empresaModel.cadastrar(razaoSocial, cnpj).then((resultado) => {
-        res.status(201).json(resultado);
-      });
-    }
-  });
+    tipoModel.deletarTipo(id_tipo)
+        .then(function(resultados) {
+            res.json(resultados);
+        })
+        .catch(function(erro) {
+            res.status(500).json(erro);
+        });
 }
 
 module.exports = {
-  buscarPorCnpj,
-  buscarPorId,
-  cadastrar,
-  listar,
+    criarTipo,
+    listarTipos,
+    atualizarTipo,
+    deletarTipo
 };

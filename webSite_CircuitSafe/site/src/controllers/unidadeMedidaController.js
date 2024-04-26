@@ -1,48 +1,55 @@
-var medidaModel = require("../models/medidaModel");
+var unidadeModel = require("../models/unidadeModel");
 
-function buscarUltimasMedidas(req, res) {
+function criarUnidade(req, res) {
+    var nome_tipo = req.body.nome_tipo;
 
-    const limite_linhas = 7;
-
-    var idAquario = req.params.idAquario;
-
-    console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
-
-    medidaModel.buscarUltimasMedidas(idAquario, limite_linhas).then(function (resultado) {
-        if (resultado.length > 0) {
-            res.status(200).json(resultado);
-        } else {
-            res.status(204).send("Nenhum resultado encontrado!")
-        }
-    }).catch(function (erro) {
-        console.log(erro);
-        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
-        res.status(500).json(erro.sqlMessage);
-    });
+    unidadeModel.criarUnidadeMedida(nome_tipo)
+        .then(function(resultados) {
+            res.json(resultados);
+        })
+        .catch(function(erro) {
+            res.status(500).json(erro);
+        });
 }
 
+function listarUnidades(req, res) {
+    unidadeModel.listarUnidadesMedida()
+        .then(function(resultados) {
+            res.json(resultados);
+        })
+        .catch(function(erro) {
+            res.status(500).json(erro);
+        });
+}
 
-function buscarMedidasEmTempoReal(req, res) {
+function atualizarUnidade(req, res) {
+    var id_tipo = req.body.id_tipo;
+    var nome_tipo = req.body.nome_tipo;
 
-    var idAquario = req.params.idAquario;
+    unidadeModel.atualizarUnidadeMedida(id_tipo, nome_tipo)
+        .then(function(resultados) {
+            res.json(resultados);
+        })
+        .catch(function(erro) {
+            res.status(500).json(erro);
+        });
+}
 
-    console.log(`Recuperando medidas em tempo real`);
+function deletarUnidade(req, res) {
+    var id_tipo = req.body.id_tipo;
 
-    medidaModel.buscarMedidasEmTempoReal(idAquario).then(function (resultado) {
-        if (resultado.length > 0) {
-            res.status(200).json(resultado);
-        } else {
-            res.status(204).send("Nenhum resultado encontrado!")
-        }
-    }).catch(function (erro) {
-        console.log(erro);
-        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
-        res.status(500).json(erro.sqlMessage);
-    });
+    unidadeModel.deletarUnidadeMedida(id_tipo)
+        .then(function(resultados) {
+            res.json(resultados);
+        })
+        .catch(function(erro) {
+            res.status(500).json(erro);
+        });
 }
 
 module.exports = {
-    buscarUltimasMedidas,
-    buscarMedidasEmTempoReal
-
-}
+    criarUnidade,
+    listarUnidades,
+    atualizarUnidade,
+    deletarUnidade
+};
