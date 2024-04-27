@@ -1,11 +1,4 @@
-process.env.AMBIENTE_PROCESSO = "desenvolvimento";
-// process.env.AMBIENTE_PROCESSO = "producao";
-
 var express = require("express");
-var cors = require("cors");
-var path = require("path");
-var PORTA = process.env.AMBIENTE_PROCESSO == "desenvolvimento" ? 3333 : 8080;
-
 var app = express();
 
 var indexRouter = require("./src/routes/tipo");
@@ -14,7 +7,9 @@ var avisosRouter = require("./src/routes/registroRecurso");
 var medidasRouter = require("./src/routes/unidadeMedidas");
 var maquinaRouter = require("./src/routes/maquina");
 var empresasRouter = require("./src/routes/registroManutencao");
-var componenteRouter = require("./src/routes/componentes"); // Adicione esta linha
+var componenteRouter = require("./src/routes/componentes");
+var fabricanteRouter = require("./src/routes/fabricante"); 
+var empresaRouter = require("./src/routes/empresa"); 
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -26,9 +21,11 @@ app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 app.use("/avisos", avisosRouter);
 app.use("/medidas", medidasRouter);
-app.use("/aquarios", aquariosRouter);
+app.use("/maquinas", maquinaRouter);
 app.use("/empresas", empresasRouter);
-app.use("/componentes", componenteRouter); // Adicione esta linha
+app.use("/componentes", componenteRouter);
+app.use("/fabricantes", fabricanteRouter); 
+app.use("/empresas", empresaRouter); 
 
 app.listen(PORTA, function () {
     console.log(`Servidor do seu site já está rodando! Acesse o caminho a seguir para visualizar: http://localhost:${PORTA} \n
