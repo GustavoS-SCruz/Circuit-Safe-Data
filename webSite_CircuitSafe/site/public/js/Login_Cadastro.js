@@ -68,11 +68,7 @@ function cadastrar() {
           cardErro.style.display = "block";
 
           mensagem_erro.innerHTML =
-            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-          // setTimeout(() => {
-          //   window.location = "login.html";
-          // }, "2000");
+            "Cadastro realizado com sucesso! Clique em 'login' para acessar o sistema.";
 
           limparFormulario();
           finalizarAguardar();
@@ -103,6 +99,30 @@ function cadastrar() {
         console.log(`#ERRO: ${resposta}`);
       });
   }
+
+fetch("/usuarios/login", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    emailServer: emailVar,
+    senhaServer: senhaVar,
+  }),
+})
+  .then(function (resposta) {
+    if (resposta.ok) {
+      return resposta.json();
+    } else {
+      throw "Houve um erro ao tentar realizar o login!";
+    }
+  })
+  .then(function (dados) {
+    console.log("Login realizado com sucesso!", dados);
+  })
+  .catch(function (erro) {
+    console.log(`#ERRO: ${erro}`);
+  });
 
   function sumirMensagem() {
     cardErro.style.display = "none";
