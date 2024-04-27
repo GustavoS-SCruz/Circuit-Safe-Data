@@ -1,23 +1,22 @@
 var express = require("express");
 var router = express.Router();
 
-var empresaController = require("../controllers/empresaController");
+var registroManutencaoController = require("../controllers/registroManutencaoController");
 
-//Recebendo os dados do html e direcionando para a função cadastrar de usuarioController.js
-router.post("/cadastrar", function (req, res) {
-    empresaController.cadastrar(req, res);
-})
-
-router.get("/buscar", function (req, res) {
-    empresaController.buscarPorCnpj(req, res);
-});
-
-router.get("/buscar/:id", function (req, res) {
-  empresaController.buscarPorId(req, res);
+router.post("/criar", function (req, res) {
+    registroManutencaoController.criarRegistroManutencao(req, res);
 });
 
 router.get("/listar", function (req, res) {
-  empresaController.listar(req, res);
+    registroManutencaoController.listarRegistrosManutencao(req, res);
+});
+
+router.put("/atualizar", function (req, res) {
+    registroManutencaoController.atualizarRegistroManutencao(req, res);
+});
+
+router.delete("/deletar", function (req, res) {
+    registroManutencaoController.deletarRegistroManutencao(req, res);
 });
 
 module.exports = router;
