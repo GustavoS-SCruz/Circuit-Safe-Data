@@ -1,4 +1,4 @@
-const database = require('./database');
+const database = require('../database/config');
 
 function criarRegistroManutencao(fk_maquina, fk_usuario, descricao) {
     var instrucao = `

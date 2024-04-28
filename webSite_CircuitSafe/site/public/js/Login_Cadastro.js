@@ -15,15 +15,36 @@ function logar(){
   var usuario = email_usuario_login.value;
   var senha = senha_usuario_login.value;
 
-  if(usuario == "circuit_safe" || senha == "urubu100"){
-    let params = new URLSearchParams();
-    params.append('username', usuario);
-    params.append('password', senha);
+  fetch("/usuarios/autenticar", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      emailServer: usuario,
+      senhaServer: senha,
+    }),
+  }).then(function (resposta) {
+      if (resposta.ok) {
+        console.log(resposta);
+        alert("chegamos!")
 
-    window.location = "./dashboard/index.html?" + params.toString();
-  } else {
-    alert("Usuário ou senha inválidos!");
-  }
+        resposta.json().then(json => {
+            console.log(json);
+            console.log(JSON.stringify(json));  
+            sessionStorage.EMAIL_USUARIO = json[0].email;
+            sessionStorage.NOME_USUARIO = json[0].nome_usuario;
+            sessionStorage.ID_USUARIO = json[0].id_usuario;
+            sessionStorage.ID_EMPRESA = json[0].empresaId;
+            sessionStorage.NIVEL_USUARIO = json[0].nivel;
+            console.log(sessionStorage);
+
+
+        });
+      } else {
+        throw "Houve um erro ao tentar realizar o login!";
+      }
+    })
 
 }
 
@@ -99,30 +120,6 @@ function cadastrar() {
         console.log(`#ERRO: ${resposta}`);
       });
   }
-
-fetch("/usuarios/login", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    emailServer: emailVar,
-    senhaServer: senhaVar,
-  }),
-})
-  .then(function (resposta) {
-    if (resposta.ok) {
-      return resposta.json();
-    } else {
-      throw "Houve um erro ao tentar realizar o login!";
-    }
-  })
-  .then(function (dados) {
-    console.log("Login realizado com sucesso!", dados);
-  })
-  .catch(function (erro) {
-    console.log(`#ERRO: ${erro}`);
-  });
 
   function sumirMensagem() {
     cardErro.style.display = "none";

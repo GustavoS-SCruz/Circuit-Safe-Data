@@ -1,5 +1,10 @@
+process.env.AMBIENTE_PROCESSO = "desenvolvimento";
+
 var express = require("express");
 var app = express();
+const path = require('path');
+var cors = require("cors");
+var PORTA = process.env.AMBIENTE_PROCESSO == "desenvolvimento" ? 3333 : 8080;
 
 var indexRouter = require("./src/routes/tipo");
 var usuarioRouter = require("./src/routes/usuarios");
@@ -7,7 +12,7 @@ var avisosRouter = require("./src/routes/registroRecurso");
 var medidasRouter = require("./src/routes/unidadeMedidas");
 var maquinaRouter = require("./src/routes/maquina");
 var empresasRouter = require("./src/routes/registroManutencao");
-var componenteRouter = require("./src/routes/componentes");
+var componenteRouter = require("./src/routes/componente");
 var fabricanteRouter = require("./src/routes/fabricante"); 
 var empresaRouter = require("./src/routes/empresa"); 
 

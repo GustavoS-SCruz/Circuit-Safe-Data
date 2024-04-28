@@ -1,4 +1,4 @@
-var unidadeModel = require("../models/unidadeModel");
+var unidadeModel = require("../models/unidadeMedidaModel");
 
 function criarUnidade(req, res) {
     var nome_tipo = req.body.nome_tipo;
