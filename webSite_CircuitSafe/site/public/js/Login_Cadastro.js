@@ -37,15 +37,16 @@ function logar(){
             sessionStorage.ID_USUARIO = json[0].id_usuario;
             sessionStorage.ID_EMPRESA = json[0].empresaId;
             sessionStorage.NIVEL_USUARIO = json[0].nivel;
-            console.log(sessionStorage);
 
-
+            // Redireciona para a dashboard
+            window.location.href = "./dashboard/index.html";
         });
       } else {
-        throw "Houve um erro ao tentar realizar o login!";
+        console.log('Erro na autenticação');
       }
-    })
-
+  }).catch(function (erro) {
+      console.log('Erro na requisição: ' + erro.message);
+  });
 }
 
 function cadastrar() {
@@ -75,8 +76,6 @@ function cadastrar() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
         cpfServer: cpfVar,
         emailServer: emailVar,
         senhaServer: senhaVar,
