@@ -26,12 +26,13 @@ function autenticarUsuario(req, res) {
 }
 
 function cadastrarUsuario(req, res) {
-    var nome = req.body.nome;
-    var email = req.body.email;
-    var senha = req.body.senha;
-    var nivel = req.body.nivel;
-    var empresaId = req.body.empresaId;
+    var nome = req.body.nomeServer;
+    var email = req.body.emailServer;
+    var senha = req.body.senhaServer;
+    var nivel = 1;
+    var empresaId = 1;
 
+    console.log("controller")
     usuarioModel.cadastrar(nome, email, senha, nivel, empresaId)
         .then(function(resultados) {
             res.json(resultados);

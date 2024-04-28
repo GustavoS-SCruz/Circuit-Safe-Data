@@ -50,24 +50,15 @@ function logar(){
 }
 
 function cadastrar() {
-    aguardar();
-
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
-    var emailVar = email_usuario.value;
-    var senhaVar = senha_input.value;
-    var cpfVar = cpf_usuario.value;
+    var emailVar = email_usuario_cadastro.value;
+    var senhaVar = senha_usuario_cadastro.value;
+    var nomeVar = nome_usuario_cadastro.value;
 
-    if (cpfVar == "" || emailVar == "" || senhaVar == "") {
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
-
-      finalizarAguardar();
+    if (emailVar == "" || senhaVar == "") {
       return false;
-    } else {
-      setInterval(sumirMensagem, 5000);
-    }
+    } 
 
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
@@ -76,7 +67,7 @@ function cadastrar() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        cpfServer: cpfVar,
+        nomeServer: nomeVar,
         emailServer: emailVar,
         senhaServer: senhaVar,
       }),
@@ -85,20 +76,13 @@ function cadastrar() {
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-          cardErro.style.display = "block";
-
-          mensagem_erro.innerHTML =
-            "Cadastro realizado com sucesso! Clique em 'login' para acessar o sistema.";
-
-          limparFormulario();
-          finalizarAguardar();
+          window.location.href = "";
         } else {
           throw "Houve um erro ao tentar realizar o cadastro!";
         }
       })
       .catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
-        finalizarAguardar();
       });
 
     return false;
@@ -118,8 +102,4 @@ function cadastrar() {
       .catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
       });
-  }
-
-  function sumirMensagem() {
-    cardErro.style.display = "none";
   }
