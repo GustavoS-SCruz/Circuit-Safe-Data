@@ -27,7 +27,6 @@ function logar(){
   }).then(function (resposta) {
       if (resposta.ok) {
         console.log(resposta);
-        alert("chegamos!")
 
         resposta.json().then(json => {
             console.log(json);
