@@ -89,19 +89,12 @@ document.addEventListener("DOMContentLoaded", function () {
 				text: "Rede",
 				align: "left",
 			},
-			subtitle: {
-				text:
-					document.ontouchstart === undefined
-						? "Click and drag in the plot area to zoom in"
-						: "Pinch the chart to zoom in",
-				align: "left",
-			},
 			xAxis: {
 				type: "datetime",
 			},
 			yAxis: {
 				title: {
-					text: "Exchange rate",
+					text: "Desempenho de rede",
 				},
 			},
 			legend: {
@@ -142,7 +135,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			series: [
 				{
 					type: "area",
-					name: "USD to EUR",
+					name: "Mbps",
 					data: [
 						6, 3, 5, 8, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
 						20,
@@ -161,19 +154,12 @@ document.addEventListener("DOMContentLoaded", function () {
 				text: "Rede",
 				align: "left",
 			},
-			subtitle: {
-				text:
-					document.ontouchstart === undefined
-						? "Click and drag in the plot area to zoom in"
-						: "Pinch the chart to zoom in",
-				align: "left",
-			},
 			xAxis: {
 				type: "datetime",
 			},
 			yAxis: {
 				title: {
-					text: "Exchange rate",
+					text: "Desempenho de rede",
 				},
 			},
 			legend: {
@@ -214,7 +200,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			series: [
 				{
 					type: "area",
-					name: "USD to EUR",
+					name: "Mbps",
 					data: [
 						6, 3, 5, 8, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
 						20,
@@ -250,7 +236,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		// the value axis
 		yAxis: {
 			min: 0,
-			max: 200,
+			max: 100,
 			tickPixelInterval: 72,
 			tickPosition: "inside",
 			tickColor: Highcharts.defaultOptions.chart.backgroundColor || "#FFFFFF",
@@ -267,19 +253,19 @@ document.addEventListener("DOMContentLoaded", function () {
 			plotBands: [
 				{
 					from: 0,
-					to: 120,
+					to: 80,
 					color: "#55BF3B", // green
 					thickness: 20,
 				},
 				{
-					from: 120,
-					to: 160,
+					from: 80,
+					to: 90,
 					color: "#DDDF0D", // yellow
 					thickness: 20,
 				},
 				{
-					from: 160,
-					to: 200,
+					from: 90,
+					to: 100,
 					color: "#DF5353", // red
 					thickness: 20,
 				},
@@ -288,13 +274,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		series: [
 			{
-				name: "Speed",
+				name: "Uso da CPU",
 				data: [80],
 				tooltip: {
-					valueSuffix: " km/h",
+					valueSuffix: "%",
 				},
 				dataLabels: {
-					format: "{y} km/h",
+					format: "{y} %",
 					borderWidth: 0,
 					color:
 						(Highcharts.defaultOptions.title &&
@@ -338,7 +324,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 			series: [
 				{
-					name: "Bateria",
+					name: "Carga da bateria",
 					data: data,
 					tooltip: {
 						valueDecimals: 2,
@@ -366,7 +352,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 			series: [
 				{
-					name: "AAPL",
+					name: "Carga da bateria",
 					data: data,
 					tooltip: {
 						valueDecimals: 2,
@@ -385,7 +371,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			align: "left",
 		},
 		xAxis: {
-			categories: ["USA", "China", "Brazil", "EU", "India", "Russia"],
+			categories: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun"],
 			crosshair: true,
 			accessibility: {
 				description: "Countries",
@@ -394,11 +380,11 @@ document.addEventListener("DOMContentLoaded", function () {
 		yAxis: {
 			min: 0,
 			title: {
-				text: "1000 metric tons (MT)",
+				text: "Uso do disco",
 			},
 		},
 		tooltip: {
-			valueSuffix: " (1000 MT)",
+			valueSuffix: " %",
 		},
 		plotOptions: {
 			column: {
@@ -408,12 +394,12 @@ document.addEventListener("DOMContentLoaded", function () {
 		},
 		series: [
 			{
-				name: "Corn",
-				data: [406292, 260000, 107000, 68300, 27500, 14500],
+				name: "Livre",
+				data: [40, 35, 17, 68, 27, 14],
 			},
 			{
-				name: "Wheat",
-				data: [51086, 136000, 5500, 141000, 107180, 77000],
+				name: "Usado",
+				data: [60, 65, 83, 32, 73, 86],
 			},
 		],
 	});
@@ -427,7 +413,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			align: "left",
 		},
 		xAxis: {
-			categories: ["USA", "China", "Brazil", "EU", "India", "Russia"],
+			categories: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun"],
 			crosshair: true,
 			accessibility: {
 				description: "Countries",
@@ -436,11 +422,11 @@ document.addEventListener("DOMContentLoaded", function () {
 		yAxis: {
 			min: 0,
 			title: {
-				text: "1000 metric tons (MT)",
+				text: "Uso da CPU",
 			},
 		},
 		tooltip: {
-			valueSuffix: " (1000 MT)",
+			valueSuffix: " %",
 		},
 		plotOptions: {
 			column: {
@@ -450,12 +436,12 @@ document.addEventListener("DOMContentLoaded", function () {
 		},
 		series: [
 			{
-				name: "Corn",
-				data: [406292, 260000, 107000, 68300, 27500, 14500],
+				name: "Livre",
+				data: [40, 35, 17, 68, 27, 14],
 			},
 			{
-				name: "Wheat",
-				data: [51086, 136000, 5500, 141000, 107180, 77000],
+				name: "Usado",
+				data: [60, 65, 83, 32, 73, 86],
 			},
 		],
 	});
@@ -715,7 +701,7 @@ Highcharts.chart("registros-ram", {
 	// the value axis
 	yAxis: {
 		min: 0,
-		max: 200,
+		max: 100,
 		tickPixelInterval: 72,
 		tickPosition: "inside",
 		tickColor: Highcharts.defaultOptions.chart.backgroundColor || "#FFFFFF",
@@ -732,19 +718,19 @@ Highcharts.chart("registros-ram", {
 		plotBands: [
 			{
 				from: 0,
-				to: 120,
+				to: 80,
 				color: "#55BF3B", // green
 				thickness: 20,
 			},
 			{
-				from: 120,
-				to: 160,
+				from: 80,
+				to: 90,
 				color: "#DDDF0D", // yellow
 				thickness: 20,
 			},
 			{
-				from: 160,
-				to: 200,
+				from: 90,
+				to: 100,
 				color: "#DF5353", // red
 				thickness: 20,
 			},
@@ -753,13 +739,13 @@ Highcharts.chart("registros-ram", {
 
 	series: [
 		{
-			name: "Speed",
+			name: "Uso da ram",
 			data: [80],
 			tooltip: {
-				valueSuffix: " km/h",
+				valueSuffix: " %",
 			},
 			dataLabels: {
-				format: "{y} km/h",
+				format: "{y} %",
 				borderWidth: 0,
 				color:
 					(Highcharts.defaultOptions.title &&
@@ -792,7 +778,7 @@ setInterval(() => {
 			inc = Math.round((Math.random() - 0.5) * 20);
 
 		let newVal = point.y + inc;
-		if (newVal < 0 || newVal > 200) {
+		if (newVal < 0 || newVal > 100) {
 			newVal = point.y - inc;
 		}
 
@@ -854,18 +840,18 @@ Highcharts.chart("monitoramento-ram", {
 
 	series: [
 		{
-			name: "Browsers",
+			name: "Uso da ram",
 			colorByPoint: true,
 			data: [
 				{
-					name: "Chrome",
+					name: "Usado",
 					y: 61.9,
-					drilldown: "Chrome",
+					drilldown: "Usado",
 				},
 				{
-					name: "Firefox",
+					name: "Livre",
 					y: 38.1,
-					drilldown: "Firefox",
+					drilldown: "Livre",
 				},
 			],
 		},
@@ -970,7 +956,7 @@ Highcharts.chart("registros-disco", {
 
 	series: [
 		{
-			name: "Feedback",
+			name: "Uso de disco",
 			data: [
 				{
 					color: Highcharts.getOptions().colors[2],
