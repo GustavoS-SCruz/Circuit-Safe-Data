@@ -469,6 +469,9 @@ document.addEventListener("DOMContentLoaded", function () {
 		title: {
 			text: "Gerenciamento de máquinas",
 			align: "left",
+			style: {
+				fontSize: '15px'
+			}
 		},
 		tooltip: {
 			outside: true,
@@ -532,6 +535,9 @@ document.addEventListener("DOMContentLoaded", function () {
 		},
 		title: {
 			text: "Relação chamados X atendimentos",
+			style: {
+				fontSize: '15px'
+			}
 		},
 		xAxis: {
 			categories: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun"],
@@ -581,6 +587,9 @@ document.addEventListener("DOMContentLoaded", function () {
 		title: {
 			text: "Componentes monitorados X trocados",
 			align: "left",
+			style: {
+				fontSize: '15px'
+			}
 		},
 		xAxis: [
 			{
@@ -651,6 +660,9 @@ document.addEventListener("DOMContentLoaded", function () {
 		title: {
 			text: "Aquisição de equipamentos/mês",
 			align: "left",
+			style: {
+				fontSize: '15px'
+			}
 		},
 		colors: ["#4caefe", "#3fbdf3", "#35c3e8", "#2bc9dc", "#20cfe1", "#16d4e6"],
 		xAxis: {

@@ -170,9 +170,8 @@ body {
   border: none !important;
   padding: 2% !important;
 }
-
-.home .card {
-  border: 1px outset var(--primary-color) !important;
+.home .first-column p, li{
+  font-size: 18px;  
 }
 
 .home li::before {
@@ -193,8 +192,26 @@ body {
 .home-relacao-maquinas-novas,
 .home-listagem-maquinas,
 .home-listagem-chamados {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.card-listagem-maquinas,
+.card-listagem-chamados{
+  text-align: center;
+  overflow-y: scroll;
+}
+
+
+.card-listagem-maquinas{
   width: 100%;
-  height: 100%;
+  height: 35vh;
+  overflow-y: scroll;
+  padding: 1vh 1vw !important;
+}
+
+tr{
+  text-align: center;
 }
 
 .monitoramento,
