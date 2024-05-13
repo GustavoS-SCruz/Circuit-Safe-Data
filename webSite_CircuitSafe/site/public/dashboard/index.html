@@ -14,7 +14,6 @@
 		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
 		crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-	<script src="path/to/chartjs/dist/chart.umd.js"></script>
 	<script src="https://code.highcharts.com/stock/highstock.js"></script>
 	<script src="https://code.highcharts.com/highcharts.js"></script>
 	<script src="https://code.highcharts.com/highcharts-more.js"></script>
@@ -37,17 +36,16 @@
 					title="Home"><i class="bi bi-house"></i><span class="hidden-text"> Home</span></a>
 				<a class="menu-item nav-link d-flex align-items-center text-white-50" value="monitoramento"
 					title="Monitoramento">
-					<i class="bi bi-file-earmark-bar-graph"></i><span class="hidden-text"> Registros</span></a>
-				<a class="menu-item nav-link d-flex align-items-center text-white-50" value="registros"
-					title="Registros">
 					<i class="bi bi-graph-up-arrow"></i><span class="hidden-text"> Monitoramento</span></a>
-				<!-- <a
+				<a class="menu-item nav-link d-flex align-items-center text-white-50" value="registro" title="Registro">
+					<i class="bi bi-file-earmark-bar-graph"></i><span class="hidden-text"> Registro</span></a>
+				<a
 						class="menu-item nav-link d-flex align-items-center text-white-50"
 						value="alertas"
 						title="alertas">
 						<i class="bi bi-exclamation-octagon"></i
 						><span class="hidden-text"> Alertas</span></a
-					> -->
+					>
 			</nav>
 
 			<!-- <i class="toggle-menu bi bi-box-arrow-left text-white-50"></i> -->
@@ -59,8 +57,8 @@
 					data-bs-toggle="dropdown" aria-expanded="false">
 					<i class="user-icon bi bi-person-circle"></i>
 					<div class="hidden-text col flex-column justify-content-center">
-						<p class="row user-name">Patrick Velasques</p>
-						<p class="row user-mail">patrick.pessanha@sptech.school</p>
+						<p class="row user-name" id="user-name"></p>
+						<p class="row user-mail" id="user-mail"></p>
 					</div>
 				</button>
 
@@ -87,12 +85,12 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 3vh 0 !important;
+            padding: 1vh 0 !important;
           ">
 				<div class="row card rounded-3" style="width: 100%; height: 25vh; padding: 3vh 3vw !important">
 					<h4 class="card-title" style="margin-bottom: 10px">
 						Bem vindo de volta,
-						<span class="nickname" style="color: var(--primary-color); font-weight: bold">Patrick</span>!
+						<span id="nickname" style="color: var(--primary-color); font-weight: bold"></span>!
 					</h4>
 					<p class="card-text">
 						Desde o seu último login no sistema, ocorreram:
@@ -104,7 +102,7 @@
 						<span id="new-alert">15</span> Novos alertas
 					</li>
 					<li class="card-text">
-						<span id="new-data">45</span> Novas leituras
+						<span id="new-data">45</span> Chamados atendidos
 					</li>
 					<img src="../assets/imgs/data-analysis.png" class="welcome-img" />
 				</div>
@@ -113,7 +111,8 @@
               width: 98%;
             "></div>
 				<div class="row" style="width: 100%; height: 67vh; justify-content: space-between">
-					<div class="col" style="width: 59%; display: flex; flex-direction: column; justify-content: space-between;">
+					<div class="col"
+						style="width: 59%; display: flex; flex-direction: column; justify-content: space-between;">
 						<div class="row card rounded-3" style="width: 100%; height: 30vh">
 							<div class="home-relacao-maquinas-novas" id="home-relacao-maquinas-novas"></div>
 						</div>
@@ -210,7 +209,9 @@
 							</table>
 						</div>
 					</div>
-						<div style="border-right: 1px solid var(--primary-color) !important; height: 96%; width: 1px; align-self: center;"></div>
+					<div
+						style="border-right: 1px solid var(--primary-color) !important; height: 96%; width: 1px; align-self: center;">
+					</div>
 
 					<div class="col" style="
                 width: 38%;
@@ -223,7 +224,9 @@
 						</div>
 
 
-						<div style="border-top: 1px solid var(--primary-color) !important; width: 92%; align-self: center;;"></div>
+						<div
+							style="border-top: 1px solid var(--primary-color) !important; width: 92%; align-self: center;;">
+						</div>
 
 						<div class="row card rounded-3" style="height: 30vh">
 							<div id="home-relacao-maquinas" class="home-relacao-maquinas"></div>
@@ -250,7 +253,8 @@
 				</div>
 
 
-				<div style="border-top: 1px solid var(--primary-color) !important; width: 98%; align-self: center;"></div>
+				<div style="border-top: 1px solid var(--primary-color) !important; width: 98%; align-self: center;">
+				</div>
 				<div class="col card card-listagem-chamados rounded-3" style="height: 45vh; width: 100%">
 					<h5 class="card-title" style="width: 100%; margin-bottom: 10px">
 						Calendario de Chamados
@@ -332,6 +336,156 @@
 							</tr>
 						</tbody>
 					</table>
+				</div>
+			</div>
+		</div>
+		<div class="content registro row d-none">
+			<nav class="menu-aparelhos navbar navbar-dark">
+				<ul class="lista-aparelhos navbar-nav">
+					<li class="aparelho nav-item dropdown">
+						<a class="aparelho-info nav-link dropdown-toggle" value="8966F" href="#" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false">
+							<i class="bi bi-laptop"></i>
+							Notebook 8966F
+						</a>
+						<ul class="aparelho-medicoes dropdown-menu">
+							<li>
+								<a class="dropdown-item text-white-50" href="#">Visão Geral</a>
+							</li>
+							<li>
+								<hr class="dropdown-divider" />
+							</li>
+							<li><a class="dropdown-item text-white-50" href="#">CPU</a></li>
+							<li>
+								<a class="dropdown-item text-white-50" href="#">Memória</a>
+							</li>
+							<li><a class="dropdown-item text-white-50" href="#">RAM</a></li>
+							<li>
+								<a class="dropdown-item text-white-50" href="#">Disco</a>
+							</li>
+							<li>
+								<a class="dropdown-item text-white-50" href="#">Bateria</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<hr class="dropdown-divider" />
+					</li>
+					<li class="aparelho nav-item dropdown">
+						<a class="aparelho-info nav-link dropdown-toggle" href="#" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false">
+							<i class="bi bi-laptop"></i>
+							Notebook 7362B
+						</a>
+						<ul class="aparelho-medicoes dropdown-menu">
+							<li>
+								<a class="dropdown-item text-white-50" href="#">Visão Geral</a>
+							</li>
+							<li>
+								<hr class="dropdown-divider" />
+							</li>
+							<li><a class="dropdown-item text-white-50" href="#">CPU</a></li>
+							<li>
+								<a class="dropdown-item text-white-50" href="#">Memória</a>
+							</li>
+							<li><a class="dropdown-item text-white-50" href="#">RAM</a></li>
+							<li>
+								<a class="dropdown-item text-white-50" href="#">Disco</a>
+							</li>
+							<li>
+								<a class="dropdown-item text-white-50" href="#">Bateria</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<hr class="dropdown-divider" />
+					</li>
+					<li class="aparelho nav-item dropdown">
+						<a class="aparelho-info nav-link dropdown-toggle" href="#" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false">
+							<i class="bi bi-laptop"></i>
+							Notebook 3456C
+						</a>
+						<ul class="aparelho-medicoes dropdown-menu">
+							<li>
+								<a class="dropdown-item text-white-50" href="#">Visão Geral</a>
+							</li>
+							<li>
+								<hr class="dropdown-divider" />
+							</li>
+							<li><a class="dropdown-item text-white-50" href="#">CPU</a></li>
+							<li>
+								<a class="dropdown-item text-white-50" href="#">Memória</a>
+							</li>
+							<li><a class="dropdown-item text-white-50" href="#">RAM</a></li>
+							<li>
+								<a class="dropdown-item text-white-50" href="#">Disco</a>
+							</li>
+							<li>
+								<a class="dropdown-item text-white-50" href="#">Bateria</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<hr class="dropdown-divider" />
+					</li>
+					<li class="aparelho nav-item dropdown">
+						<a class="aparelho-info nav-link dropdown-toggle" href="#" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false">
+							<i class="bi bi-laptop"></i>
+							Notebook 1243D
+						</a>
+						<ul class="aparelho-medicoes dropdown-menu">
+							<li>
+								<a class="dropdown-item text-white-50" href="#">Visão Geral</a>
+							</li>
+							<li>
+								<hr class="dropdown-divider" />
+							</li>
+							<li><a class="dropdown-item text-white-50" href="#">CPU</a></li>
+							<li>
+								<a class="dropdown-item text-white-50" href="#">Memória</a>
+							</li>
+							<li><a class="dropdown-item text-white-50" href="#">RAM</a></li>
+							<li>
+								<a class="dropdown-item text-white-50" href="#">Disco</a>
+							</li>
+							<li>
+								<a class="dropdown-item text-white-50" href="#">Bateria</a>
+							</li>
+						</ul>
+					</li>
+					<button class="adicionar-equip btn btn-primary text-white-50" type="submit">
+						Adicionar equipamento
+					</button>
+				</ul>
+			</nav>
+			<div class="graficos-registro">
+				<div class="coluna-grafico esquerda d-flex"
+					style="border-right: 1px solid var(--primary-color) !important">
+					<div class="grafico-01 big-chart-01 card rounded-3">
+						<p id="registro-bateria" class="card-text"></p>
+					</div>
+
+					<div style="border-top: 1px solid var(--primary-color) !important; width: 98%;"></div>
+					<div class="grafico-02 big-chart-01 card rounded-3">
+						<p id="registro-rede" class="card-text"></p>
+					</div>
+				</div>
+				<div class="coluna-grafico direita d-flex">
+					<div class="grafico-03 small-chart-01 card rounded-3">
+						<p id="registro-disco" class="card-text"></p>
+					</div>
+
+					<div style="border-top: 1px solid var(--primary-color) !important; width: 100%;"></div>
+					<div class="grafico-04 small-chart-01 card rounded-3">
+						<p id="registro-ram" class="card-text"></p>
+					</div>
+
+					<div style="border-top: 1px solid var(--primary-color) !important; width: 100%;"></div>
+					<div class="grafico-05 small-chart-01 card rounded-3">
+						<p id="registro-cpu" class="card-text"></p>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -457,189 +611,39 @@
 				</ul>
 			</nav>
 			<div class="graficos-monitoramento">
-				<div class="coluna-grafico esquerda d-flex"
-					style="border-right: 1px solid var(--primary-color) !important">
-					<div class="grafico-01 big-chart-01 card rounded-3">
-						<p id="monitoramento-bateria" class="card-text"></p>
-					</div>
-
-					<div style="border-top: 1px solid var(--primary-color) !important; width: 98%;"></div>
-					<div class="grafico-02 big-chart-01 card rounded-3">
-						<p id="monitoramento-rede" class="card-text"></p>
-					</div>
-				</div>
-				<div class="coluna-grafico direita d-flex">
-					<div class="grafico-03 small-chart-01 card rounded-3">
-						<p id="monitoramento-disco" class="card-text"></p>
-					</div>
-
-					<div style="border-top: 1px solid var(--primary-color) !important; width: 100%;"></div>
-					<div class="grafico-04 small-chart-01 card rounded-3">
-						<p id="monitoramento-ram" class="card-text"></p>
-					</div>
-
-					<div style="border-top: 1px solid var(--primary-color) !important; width: 100%;"></div>
-					<div class="grafico-05 small-chart-01 card rounded-3">
-						<p id="monitoramento-cpu" class="card-text"></p>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="content registros row d-none">
-			<nav class="menu-aparelhos navbar navbar-dark">
-				<ul class="lista-aparelhos navbar-nav">
-					<li class="aparelho nav-item dropdown">
-						<a class="aparelho-info nav-link dropdown-toggle" value="8966F" href="#" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false">
-							<i class="bi bi-laptop"></i>
-							Notebook 8966F
-						</a>
-						<ul class="aparelho-medicoes dropdown-menu">
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Visão Geral</a>
-							</li>
-							<li>
-								<hr class="dropdown-divider" />
-							</li>
-							<li><a class="dropdown-item text-white-50" href="#">CPU</a></li>
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Memória</a>
-							</li>
-							<li><a class="dropdown-item text-white-50" href="#">RAM</a></li>
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Disco</a>
-							</li>
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Bateria</a>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<hr class="dropdown-divider" />
-					</li>
-					<li class="aparelho nav-item dropdown">
-						<a class="aparelho-info nav-link dropdown-toggle" href="#" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false">
-							<i class="bi bi-laptop"></i>
-							Notebook 7362B
-						</a>
-						<ul class="aparelho-medicoes dropdown-menu">
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Visão Geral</a>
-							</li>
-							<li>
-								<hr class="dropdown-divider" />
-							</li>
-							<li><a class="dropdown-item text-white-50" href="#">CPU</a></li>
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Memória</a>
-							</li>
-							<li><a class="dropdown-item text-white-50" href="#">RAM</a></li>
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Disco</a>
-							</li>
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Bateria</a>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<hr class="dropdown-divider" />
-					</li>
-					<li class="aparelho nav-item dropdown">
-						<a class="aparelho-info nav-link dropdown-toggle" href="#" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false">
-							<i class="bi bi-laptop"></i>
-							Notebook 3456C
-						</a>
-						<ul class="aparelho-medicoes dropdown-menu">
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Visão Geral</a>
-							</li>
-							<li>
-								<hr class="dropdown-divider" />
-							</li>
-							<li><a class="dropdown-item text-white-50" href="#">CPU</a></li>
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Memória</a>
-							</li>
-							<li><a class="dropdown-item text-white-50" href="#">RAM</a></li>
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Disco</a>
-							</li>
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Bateria</a>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<hr class="dropdown-divider" />
-					</li>
-					<li class="aparelho nav-item dropdown">
-						<a class="aparelho-info nav-link dropdown-toggle" href="#" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false">
-							<i class="bi bi-laptop"></i>
-							Notebook 1243D
-						</a>
-						<ul class="aparelho-medicoes dropdown-menu">
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Visão Geral</a>
-							</li>
-							<li>
-								<hr class="dropdown-divider" />
-							</li>
-							<li><a class="dropdown-item text-white-50" href="#">CPU</a></li>
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Memória</a>
-							</li>
-							<li><a class="dropdown-item text-white-50" href="#">RAM</a></li>
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Disco</a>
-							</li>
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Bateria</a>
-							</li>
-						</ul>
-					</li>
-					<button class="adicionar-equip btn btn-primary text-white-50" type="submit">
-						Adicionar equipamento
-					</button>
-				</ul>
-			</nav>
-			<div class="graficos-registros">
 				<div class="linha-grafico superior-02 d-flex">
 					<div class="grafico-03 small-chart-02 card rounded-3">
-						<p id="registros-cpu" class="card-text"></p>
+						<p id="monitoramento-cpu" class="card-text"></p>
 					</div>
 					<div style="
                 border-left: 1px solid var(--primary-color) !important;
                 height: 98%;
               "></div>
 					<div class="grafico-04 small-chart-02 card rounded-3">
-						<p id="registros-ram" class="card-text"></p>
+						<p id="monitoramento-ram" class="card-text"></p>
 					</div>
 					<div style="
                 border-left: 1px solid var(--primary-color) !important;
                 height: 98%;
               "></div>
 					<div class="grafico-05 small-chart-02 card rounded-3">
-						<p id="registros-disco" class="card-text"></p>
+						<p id="monitoramento-disco" class="card-text"></p>
 					</div>
 				</div>
 				<div class="linha-grafico inferior-02 d-flex"
 					style="border-top: 1px solid var(--primary-color) !important">
 					<div class="grafico-01 big-chart-02 card rounded-3">
-						<p id="registros-bateria" class="card-text"></p>
+						<p id="monitoramento-bateria" class="card-text"></p>
 					</div>
 
 					<div style="border-left: 1px solid var(--primary-color) !important; height: 100%;"></div>
 					<div class="grafico-02 big-chart-02 card rounded-3">
-						<p id="registros-rede" class="card-text"></p>
+						<p id="monitoramento-rede" class="card-text"></p>
 					</div>
 				</div>
 			</div>
 		</div>
-		<!-- <div class="content alertas row d-none">
+		<div class="content alertas row d-none">
 				<nav class="menu-aparelhos navbar navbar-dark">
 					<ul class="lista-aparelhos navbar-nav">
 						<li class="aparelho nav-item dropdown">
@@ -790,7 +794,7 @@
 				<div class="graficos-alertas">
 					<div class="linha-grafico superior-02 d-flex">
 						<div class="grafico-03 small-chart-02 card rounded-3">
-							<p id="registros-cpu" class="card-text"></p>
+							<p id="monitoramento-cpu" class="card-text"></p>
 						</div>
 						<div
 							style="
@@ -798,7 +802,7 @@
 								height: 98%;
 							"></div>
 						<div class="grafico-04 small-chart-02 card rounded-3">
-							<p id="registros-ram" class="card-text"></p>
+							<p id="monitoramento-ram" class="card-text"></p>
 						</div>
 						<div
 							style="
@@ -806,14 +810,14 @@
 								height: 98%;
 							"></div>
 						<div class="grafico-05 small-chart-02 card rounded-3">
-							<p id="registros-disco" class="card-text"></p>
+							<p id="monitoramento-disco" class="card-text"></p>
 						</div>
 					</div>
 					<div
 						class="linha-grafico inferior-02 d-flex"
 						style="border-top: 1px solid var(--primary-color) !important">
 						<div class="grafico-01 big-chart-02 card rounded-3">
-							<p id="registros-bateria" class="card-text"></p>
+							<p id="monitoramento-bateria" class="card-text"></p>
 						</div>
 						<div
 							style="
@@ -821,11 +825,11 @@
 								height: 98%;
 							"></div>
 						<div class="grafico-02 big-chart-02 card rounded-3">
-							<p id="registros-rede" class="card-text"></p>
+							<p id="monitoramento-rede" class="card-text"></p>
 						</div>
 					</div>
 				</div>
-			</div> -->
+			</div>
 	</div>
 </body>
 

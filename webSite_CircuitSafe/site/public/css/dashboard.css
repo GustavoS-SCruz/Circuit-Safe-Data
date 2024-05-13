@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 :root {
-  font-size: 16px;
+  font-size: 10px;
   --primary-color: #17195d;
   --secondary-color: hsl(238, 60%, 33%);
   --tertiary-color: hsl(238, 60%, 43%);
@@ -19,8 +19,8 @@
 }
 
 body {
-  height: 100vh;
-  width: 100vw;
+  height: 98vh;
+  width: 98vw;
 }
 
 .col,
@@ -122,12 +122,12 @@ body {
 }
 
 .dropup button div .user-name {
-  font-size: 16px;
+  font-size: 1.3rem;
   font-weight: bold;
 }
 
 .dropup button div .user-mail {
-  font-size: 11px;
+  font-size: 1rem;
 }
 
 .dropup ul {
@@ -171,7 +171,7 @@ body {
   padding: 2% !important;
 }
 .home .first-column p, li{
-  font-size: 18px;  
+  font-size: 1.2rem;  
 }
 
 .home li::before {
@@ -183,17 +183,18 @@ body {
   width: auto !important;
   position: absolute;
   right: 0;
-  top: -43px;
+  top: -3vh;
 }
 
 .home-relacao-componentes,
 .home-relacao-maquinas,
-.home-relacao-chamados,
+#home-relacao-chamados,
 .home-relacao-maquinas-novas,
 .home-listagem-maquinas,
 .home-listagem-chamados {
   width: 100% !important;
   height: 100% !important;
+  max-height: 100% I !important;
 }
 
 .card-listagem-maquinas,
@@ -214,8 +215,8 @@ tr{
   text-align: center;
 }
 
+.registro,
 .monitoramento,
-.registros,
 .alertas {
   width: 96.5% !important;
 }
@@ -260,15 +261,15 @@ tr{
   color: var(--bs-nav-link-hover-color) !important;
 }
 
+.graficos-registro,
 .graficos-monitoramento,
-.graficos-registros,
 .graficos-alertas {
   width: 85% !important;
   height: 100%;
   display: flex;
 }
 
-.graficos-registros {
+.graficos-monitoramento {
   flex-direction: column;
 }
 
@@ -288,7 +289,7 @@ tr{
 }
 
 .big-chart-01 {
-  height: 49%;
+  height: 49% !important;
   padding: 1%;
 }
 
@@ -323,8 +324,9 @@ tr{
 }
 
 .big-chart-02 {
-  width: 46%;
-  padding: 3%;
+  width: 50%;
+  height: 100% !important;
+  padding: 1% !important;
 }
 
 .small-chart-02 {

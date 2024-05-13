@@ -29,7 +29,7 @@ function logar(){
         console.log(resposta);
 
         resposta.json().then(json => {
-            console.log(json);
+            console.log(json[0]);
             console.log(JSON.stringify(json));  
             sessionStorage.EMAIL_USUARIO = json[0].email;
             sessionStorage.NOME_USUARIO = json[0].nome_usuario;
@@ -38,7 +38,7 @@ function logar(){
             sessionStorage.NIVEL_USUARIO = json[0].nivel;
 
             // Redireciona para a dashboard
-            window.location.href = "./dashboard/index.html";
+            window.location.href = "dashboard/index.html";
         });
       } else {
         console.log('Erro na autenticação');

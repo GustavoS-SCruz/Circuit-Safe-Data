@@ -3,11 +3,21 @@ function sair() {
 	window.location = "../login_cadastro.html";
 }
 
+window.addEventListener("beforeunload", function() {
+    // Limpa a sessionStorage ao fechar a página
+    sessionStorage.clear();
+});
+
 document.addEventListener("DOMContentLoaded", function () {
-	let params = new URLSearchParams(window.location.search);
-	let username = params.get("username");
-	let password = params.get("password");
-	console.log(username, password);
+	var email = sessionStorage.EMAIL_USUARIO;
+	var nome = sessionStorage.NOME_USUARIO.charAt(0).toUpperCase() + sessionStorage.NOME_USUARIO.slice(1).toLowerCase();
+	var id = sessionStorage.ID_USUARIO;
+	var empresaId = sessionStorage.ID_EMPRESA;
+	var nivel = sessionStorage.NIVEL_USUARIO;
+	document.getElementById("nickname").textContent = nome;
+	document.getElementById("user-name").textContent = nome;
+	document.getElementById("user-mail").textContent = email;	
+	console.log(nome, email);
 
 	var navLinks = document.querySelectorAll(".nav-link");
 
@@ -48,17 +58,17 @@ document.addEventListener("DOMContentLoaded", function () {
 				if (target == "home") {
 					home = document.querySelector(".home");
 					home.classList.remove("d-none");
-				} else if (target == "monitoramento") {
-					monitoramento = document.querySelector(".monitoramento");
-					monitoramento.classList.remove("d-none");
+				} else if (target == "registro") {
+					registro = document.querySelector(".registro");
+					registro.classList.remove("d-none");
 					menu.setAttribute("style", "width: 3.5%;");
 					logotype.setAttribute("src", "../assets/imgs/logo.svg");
 					spans.forEach((span) => {
 						span.classList.add("d-none");
 					});
-				} else if (target == "registros") {
-					registros = document.querySelector(".registros");
-					registros.classList.remove("d-none");
+				} else if (target == "monitoramento") {
+					monitoramento = document.querySelector(".monitoramento");
+					monitoramento.classList.remove("d-none");
 					menu.setAttribute("style", "width: 3.5%;");
 					logotype.setAttribute("src", "../assets/imgs/logo.svg");
 					spans.forEach((span) => {
@@ -79,71 +89,6 @@ document.addEventListener("DOMContentLoaded", function () {
 			}
 		});
 	});
-
-	(async () => {
-		const data = Highcharts.chart("registros-rede", {
-			chart: {
-				zoomType: "x",
-			},
-			title: {
-				text: "Rede",
-				align: "left",
-			},
-			xAxis: {
-				type: "datetime",
-			},
-			yAxis: {
-				title: {
-					text: "Desempenho de rede",
-				},
-			},
-			legend: {
-				enabled: false,
-			},
-			plotOptions: {
-				area: {
-					fillColor: {
-						linearGradient: {
-							x1: 0,
-							y1: 0,
-							x2: 0,
-							y2: 1,
-						},
-						stops: [
-							[0, Highcharts.getOptions().colors[0]],
-							[
-								1,
-								Highcharts.color(Highcharts.getOptions().colors[0])
-									.setOpacity(0)
-									.get("rgba"),
-							],
-						],
-					},
-					marker: {
-						radius: 2,
-					},
-					lineWidth: 1,
-					states: {
-						hover: {
-							lineWidth: 1,
-						},
-					},
-					threshold: null,
-				},
-			},
-
-			series: [
-				{
-					type: "area",
-					name: "Mbps",
-					data: [
-						6, 3, 5, 8, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
-						20,
-					],
-				},
-			],
-		});
-	})();
 
 	(async () => {
 		const data = Highcharts.chart("monitoramento-rede", {
@@ -210,7 +155,72 @@ document.addEventListener("DOMContentLoaded", function () {
 		});
 	})();
 
-	Highcharts.chart("registros-cpu", {
+	(async () => {
+		const data = Highcharts.chart("registro-rede", {
+			chart: {
+				zoomType: "x",
+			},
+			title: {
+				text: "Rede",
+				align: "left",
+			},
+			xAxis: {
+				type: "datetime",
+			},
+			yAxis: {
+				title: {
+					text: "Desempenho de rede",
+				},
+			},
+			legend: {
+				enabled: false,
+			},
+			plotOptions: {
+				area: {
+					fillColor: {
+						linearGradient: {
+							x1: 0,
+							y1: 0,
+							x2: 0,
+							y2: 1,
+						},
+						stops: [
+							[0, Highcharts.getOptions().colors[0]],
+							[
+								1,
+								Highcharts.color(Highcharts.getOptions().colors[0])
+									.setOpacity(0)
+									.get("rgba"),
+							],
+						],
+					},
+					marker: {
+						radius: 2,
+					},
+					lineWidth: 1,
+					states: {
+						hover: {
+							lineWidth: 1,
+						},
+					},
+					threshold: null,
+				},
+			},
+
+			series: [
+				{
+					type: "area",
+					name: "Mbps",
+					data: [
+						6, 3, 5, 8, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+						20,
+					],
+				},
+			],
+		});
+	})();
+
+	Highcharts.chart("monitoramento-cpu", {
 		chart: {
 			type: "gauge",
 			plotBackgroundColor: null,
@@ -246,7 +256,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			labels: {
 				distance: 20,
 				style: {
-					fontSize: "14px",
+					fontSize: "0.9rem",
 				},
 			},
 			lineWidth: 0,
@@ -288,7 +298,7 @@ document.addEventListener("DOMContentLoaded", function () {
 							Highcharts.defaultOptions.title.style.color) ||
 						"#333333",
 					style: {
-						fontSize: "16px",
+						fontSize: "1rem",
 					},
 				},
 				dial: {
@@ -305,34 +315,21 @@ document.addEventListener("DOMContentLoaded", function () {
 			},
 		],
 	});
-
-	(async () => {
-		const data = await fetch(
-			"https://demo-live-data.highcharts.com/aapl-c.json"
-		).then((response) => response.json());
-
-		// Create the chart
-		Highcharts.stockChart("registros-bateria", {
-			rangeSelector: {
-				selected: 1,
-			},
-
-			title: {
-				text: "Bateria",
-				align: "left",
-			},
-
-			series: [
-				{
-					name: "Carga da bateria",
-					data: data,
-					tooltip: {
-						valueDecimals: 2,
-					},
-				},
-			],
-		});
-	})();
+	// Add some life
+	setInterval(() => {
+		const chart = Highcharts.charts[5];
+		if (chart && !chart.renderer.forExport) {
+			const point = chart.series[0].points[0],
+				inc = Math.round((Math.random() - 0.5) * 20);
+	
+			let newVal = point.y + inc;
+			if (newVal < 0 || newVal > 100) {
+				newVal = point.y - inc;
+			}
+	
+			point.update(newVal);
+		}
+	}, 3000);
 
 	(async () => {
 		const data = await fetch(
@@ -362,7 +359,35 @@ document.addEventListener("DOMContentLoaded", function () {
 		});
 	})();
 
-	Highcharts.chart("monitoramento-disco", {
+	(async () => {
+		const data = await fetch(
+			"https://demo-live-data.highcharts.com/aapl-c.json"
+		).then((response) => response.json());
+
+		// Create the chart
+		Highcharts.stockChart("registro-bateria", {
+			rangeSelector: {
+				selected: 1,
+			},
+
+			title: {
+				text: "Bateria",
+				align: "left",
+			},
+
+			series: [
+				{
+					name: "Carga da bateria",
+					data: data,
+					tooltip: {
+						valueDecimals: 2,
+					},
+				},
+			],
+		});
+	})();
+
+	Highcharts.chart("registro-disco", {
 		chart: {
 			type: "column",
 		},
@@ -404,7 +429,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		],
 	});
 
-	Highcharts.chart("monitoramento-cpu", {
+	Highcharts.chart("registro-cpu", {
 		chart: {
 			type: "column",
 		},
@@ -456,7 +481,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			text: "Gerenciamento de máquinas",
 			align: "left",
 			style: {
-				fontSize: '15px'
+				fontSize: '0.9rem'
 			}
 		},
 		tooltip: {
@@ -476,7 +501,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				step: 1,
 				y: 3,
 				style: {
-					fontSize: "14px",
+					fontSize: "0.9rem",
 				},
 			},
 			lineWidth: 0,
@@ -522,7 +547,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		title: {
 			text: "Relação chamados X atendimentos",
 			style: {
-				fontSize: '15px'
+				fontSize: '0.9rem'
 			}
 		},
 		xAxis: {
@@ -574,7 +599,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			text: "Componentes monitorados X trocados",
 			align: "left",
 			style: {
-				fontSize: '15px'
+				fontSize: '0.9rem'
 			}
 		},
 		xAxis: [
@@ -622,9 +647,9 @@ document.addEventListener("DOMContentLoaded", function () {
 		legend: {
 			align: "left",
 			x: 80,
-			verticalAlign: "top",
+			verticalAlign: "bottom",
 			y: 60,
-			floating: false,
+			floating: true,
 			backgroundColor:
 				Highcharts.defaultOptions.legend.backgroundColor || // theme
 				"rgba(255,255,255,0.25)",
@@ -647,7 +672,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			text: "Aquisição de equipamentos/mês",
 			align: "left",
 			style: {
-				fontSize: '15px'
+				fontSize: '0.9rem'
 			}
 		},
 		colors: ["#4caefe", "#3fbdf3", "#35c3e8", "#2bc9dc", "#20cfe1", "#16d4e6"],
@@ -675,7 +700,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	});
 });
 
-Highcharts.chart("registros-ram", {
+Highcharts.chart("monitoramento-ram", {
 	chart: {
 		type: "gauge",
 		plotBackgroundColor: null,
@@ -711,7 +736,7 @@ Highcharts.chart("registros-ram", {
 		labels: {
 			distance: 20,
 			style: {
-				fontSize: "14px",
+				fontSize: "0.9rem",
 			},
 		},
 		lineWidth: 0,
@@ -753,7 +778,7 @@ Highcharts.chart("registros-ram", {
 						Highcharts.defaultOptions.title.style.color) ||
 					"#333333",
 				style: {
-					fontSize: "16px",
+					fontSize: "1rem",
 				},
 			},
 			dial: {
@@ -787,7 +812,7 @@ setInterval(() => {
 }, 3000);
 
 // Create the chart
-Highcharts.chart("monitoramento-ram", {
+Highcharts.chart("registro-ram", {
 	chart: {
 		type: "pie",
 	},
@@ -824,7 +849,7 @@ Highcharts.chart("monitoramento-ram", {
 					},
 					format: "{point.y:.1f}%",
 					style: {
-						fontSize: "0.9em",
+						fontSize: "0.9rem",
 						textOutline: "none",
 					},
 				},
@@ -833,7 +858,7 @@ Highcharts.chart("monitoramento-ram", {
 	},
 
 	tooltip: {
-		headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+		headerFormat: '<span style="font-size:0.7rem">{series.name}</span><br>',
 		pointFormat:
 			'<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>',
 	},
@@ -871,9 +896,9 @@ function renderIcons() {
 				})
 				.css({
 					color: series.options.custom.iconColor,
-					fontSize: "1.5em",
+					fontSize: "1.5rem",
 				})
-				.add(this.series[2].group);
+				.add(this.series[2]);
 		}
 		series.icon.attr({
 			x: this.chartWidth / 2 - 15,
@@ -888,11 +913,16 @@ function renderIcons() {
 const trackColors = Highcharts.getOptions().colors.map((color) =>
 	new Highcharts.Color(color).setOpacity(0.3).get()
 );
-Highcharts.chart("registros-disco", {
+Highcharts.chart("monitoramento-disco", {
 	chart: {
 		type: "solidgauge",
 		height: "80%",
 		events: {
+            load: function () {
+                var series = this.series[0];
+                series.chart.tooltip.refresh(series.chart.series[0].points[0]);
+                series.chart.tooltip.show();
+            },
 			render: renderIcons,
 		},
 	},
@@ -903,16 +933,17 @@ Highcharts.chart("registros-disco", {
 	},
 
 	tooltip: {
+        shared: true,	
 		borderWidth: 0,
 		backgroundColor: "none",
 		shadow: false,
 		style: {
-			fontSize: "20px",
+			fontSize: "1.2rem",
 		},
 		valueSuffix: "%",
 		pointFormat:
 			"{series.name}<br>" +
-			'<span style="font-size: 2em; color: {point.color}; ' +
+			'<span style="font-size: 2rem; color: {point.color}; ' +
 			'font-weight: bold">{point.y}</span>',
 		positioner: function (labelWidth) {
 			return {
