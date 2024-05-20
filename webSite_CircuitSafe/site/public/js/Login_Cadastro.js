@@ -38,7 +38,7 @@ function logar(){
             sessionStorage.NIVEL_USUARIO = json[0].nivel;
 
             // Redireciona para a dashboard
-            window.location.href = "dashboard/index.html";
+            window.location.href = `dashboard/index.html?id=home`;
         });
       } else {
         console.log('Erro na autenticação');

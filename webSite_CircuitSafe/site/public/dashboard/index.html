@@ -28,24 +28,28 @@
 </head>
 
 <body>
-	<div class="body-container row">
-		<div class="menu navbar flex-column justify-content-space-between bg-primary">
+	<div class="body-loading row" id="body_loading">
+		<img src="../assets/loading-blue.gif" alt="" style="height: 10vh; width: auto;">
+	</div>
+	<div class="body-container row" id="body_container_index">
+		<div class="menu-home navbar flex-column justify-content-space-between bg-primary">
 			<img src="../assets/imgs/full-logo.svg" alt="Logo" class="logotype d-inline-block align-text-center" />
 			<nav class="nav flex-column justify-content-space-between">
 				<a class="menu-item nav-link d-flex align-items-center text-white-50 active" value="home"
-					title="Home"><i class="bi bi-house"></i><span class="hidden-text"> Home</span></a>
+					title="Home"><i class="bi bi-house"></i><span class="home-hidden-text"> Home</span></a>
+				<a class="menu-item nav-link d-flex align-items-center text-white-50" value="maquinas" title="Maquinas">
+					<i class="bi bi-pc-display"></i><span class="home-hidden-text"> Máquinas</span></a>
 				<a class="menu-item nav-link d-flex align-items-center text-white-50" value="monitoramento"
 					title="Monitoramento">
-					<i class="bi bi-graph-up-arrow"></i><span class="hidden-text"> Monitoramento</span></a>
-				<a class="menu-item nav-link d-flex align-items-center text-white-50" value="registro" title="Registro">
-					<i class="bi bi-file-earmark-bar-graph"></i><span class="hidden-text"> Registro</span></a>
-				<a
-						class="menu-item nav-link d-flex align-items-center text-white-50"
-						value="alertas"
-						title="alertas">
-						<i class="bi bi-exclamation-octagon"></i
-						><span class="hidden-text"> Alertas</span></a
-					>
+					<i class="bi bi-graph-up-arrow"></i><span class="home-hidden-text"> Monitoramento</span></a>
+				<a class="menu-item nav-link d-flex align-items-center text-white-50" value="registro"
+					title="Histórico de Dados">
+					<i class="bi bi-file-earmark-bar-graph"></i><span class="home-hidden-text"> Histórico de
+						Dados</span></a>
+				<a class="menu-item nav-link d-flex align-items-center text-white-50" value="alertas" title="alertas">
+					<i class="bi bi-exclamation-octagon"></i><span class="home-hidden-text"> Alertas</span></a>
+				<a class="menu-item nav-link d-flex align-items-center text-white-50" value="chamados" title="chamados">
+					<i class="bi bi-pci-card-network"></i><span class="home-hidden-text">Chamados</span></a>
 			</nav>
 
 			<!-- <i class="toggle-menu bi bi-box-arrow-left text-white-50"></i> -->
@@ -56,7 +60,7 @@
 					class="d-flex row user-info no-wrap align-items-center btn btn-primary dropdown-toggle text-white-50"
 					data-bs-toggle="dropdown" aria-expanded="false">
 					<i class="user-icon bi bi-person-circle"></i>
-					<div class="hidden-text col flex-column justify-content-center">
+					<div class="home-hidden-text col flex-column justify-content-center">
 						<p class="row user-name" id="user-name"></p>
 						<p class="row user-mail" id="user-mail"></p>
 					</div>
@@ -80,14 +84,16 @@
 		</div>
 		<div class="content home row">
 			<div class="first-column col" style="
-            width: 60%;
+            width: 65%;
             height: 100%;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: space-evenly;
+			align-items: center;
             padding: 1vh 0 !important;
           ">
-				<div class="row card rounded-3" style="width: 100%; height: 25vh; padding: 3vh 3vw !important">
+				<div class="row card rounded-3"
+					style="width: 100%;height: 31vh;padding-left: 3vw !important; justify-content: center;">
 					<h4 class="card-title" style="margin-bottom: 10px">
 						Bem vindo de volta,
 						<span id="nickname" style="color: var(--primary-color); font-weight: bold"></span>!
@@ -109,227 +115,119 @@
 				<div style="
               border-top: 1px solid var(--primary-color) !important;
               width: 98%;
+			  opacity: 30%;
             "></div>
-				<div class="row" style="width: 100%; height: 67vh; justify-content: space-between">
-					<div class="col"
-						style="width: 59%; display: flex; flex-direction: column; justify-content: space-between;">
-						<div class="row card rounded-3" style="width: 100%; height: 30vh">
-							<div class="home-relacao-maquinas-novas" id="home-relacao-maquinas-novas"></div>
-						</div>
-
-						<div style="border-top: 1px solid var(--primary-color) !important; width: 98%;"></div>
-						<div class="card-listagem-maquinas col card rounded-3" style="width: 100%; height: 35vh;">
-							<h5 class="card-title" style="width: 100%; margin-bottom: 10px">
-								Status das máquinas
-							</h5>
-							<table id="home-listagem-maquinas" class="home-listagem-maquinas table">
-								<thead class="thead-dark">
-									<tr>
-										<th scope="col">ID</th>
-										<th scope="col">Tipo</th>
-										<th scope="col">Status</th>
-										<th scope="col">IP Publico</th>
-										<th scope="col">Estado</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<th scope="row">1</th>
-										<td>t2.micro</td>
-										<td>running</td>
-										<td>54.123.45.67</td>
-										<td>
-											<i class="bi bi-check-circle-fill" style="color: green"></i>
-										</td>
-									</tr>
-									<tr>
-										<th scope="row">2</th>
-										<td>t2.micro</td>
-										<td>running</td>
-										<td>54.123.45.67</td>
-										<td>
-											<i class="bi bi-exclamation-triangle-fill" style="color: goldenrod"></i>
-										</td>
-									</tr>
-									<tr>
-										<th scope="row">3</th>
-										<td>t2.micro</td>
-										<td>running</td>
-										<td>54.123.45.67</td>
-										<td>
-											<i class="bi bi-exclamation-octagon-fill" style="color: red"></i>
-										</td>
-									</tr>
-									<tr>
-										<th scope="row">4</th>
-										<td>t2.micro</td>
-										<td>running</td>
-										<td>54.123.45.67</td>
-										<td>
-											<i class="bi bi-check-circle-fill" style="color: green"></i>
-										</td>
-									</tr>
-									<tr>
-										<th scope="row">5</th>
-										<td>t2.micro</td>
-										<td>running</td>
-										<td>54.123.45.67</td>
-										<td>
-											<i class="bi bi-check-circle-fill" style="color: green"></i>
-										</td>
-									</tr>
-									<tr>
-										<th scope="row">6</th>
-										<td>t2.micro</td>
-										<td>running</td>
-										<td>54.123.45.67</td>
-										<td>
-											<i class="bi bi-check-circle-fill" style="color: green"></i>
-										</td>
-									</tr>
-									<tr>
-										<th scope="row">7</th>
-										<td>t2.micro</td>
-										<td>running</td>
-										<td>54.123.45.67</td>
-										<td>
-											<i class="bi bi-check-circle-fill" style="color: green"></i>
-										</td>
-									</tr>
-									<tr>
-										<th scope="row">8</th>
-										<td>t2.micro</td>
-										<td>running</td>
-										<td>54.123.45.67</td>
-										<td>
-											<i class="bi bi-check-circle-fill" style="color: green"></i>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
+				<div class="rowcard rounded-3 d-flex"
+					style="width: 100%; height: 45vh; flex-direction: row; justify-content: space-between; align-items: center;">
+					<div class="home-relacao-maquinas-novas" id="home-relacao-maquinas-novas"  style="max-width: 64%; height: 100%;"></div>
+					
 					<div
-						style="border-right: 1px solid var(--primary-color) !important; height: 96%; width: 1px; align-self: center;">
+						style="border-right: 1px solid var(--primary-color) !important; height: 96%; width: 1px; align-self: center; opacity: 30%; padding: 0 !important;">
 					</div>
 
-					<div class="col" style="
-                width: 38%;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-              ">
-						<div class="row card rounded-3" style="height: 33vh">
-							<div id="home-relacao-componentes" class="home-relacao-componentes"></div>
-						</div>
+					<div id="home-relacao-maquinas" class="home-relacao-maquinas" style="max-width: 34%; height: 100%;"></div>
 
-
-						<div
-							style="border-top: 1px solid var(--primary-color) !important; width: 92%; align-self: center;;">
-						</div>
-
-						<div class="row card rounded-3" style="height: 30vh">
-							<div id="home-relacao-maquinas" class="home-relacao-maquinas"></div>
-						</div>
-					</div>
 				</div>
 			</div>
 			<div style="
                 border-left: 1px solid var(--primary-color) !important;
                 height: 98%; width: 1px;
+				opacity: 30% !important;
+				padding: 0 !important;
               "></div>
 
 			<div class="second-column col" style="
-            width: 30%;
+            width: 25%;
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 3vh 0 !important;
-            margin-right: 1vw !important;
+            padding: 1vh 0 !important;
+            margin-right: 0.5vw !important;
           ">
-				<div class="row card rounded-3" style="width: 100%; height: 45vh">
-					<div id="home-relacao-chamados"></div>
-				</div>
-
-
-				<div style="border-top: 1px solid var(--primary-color) !important; width: 98%; align-self: center;">
-				</div>
-				<div class="col card card-listagem-chamados rounded-3" style="height: 45vh; width: 100%">
+				<div class="card-listagem-maquinas col card rounded-3" style="width: 100%; height: 60vh">
 					<h5 class="card-title" style="width: 100%; margin-bottom: 10px">
-						Calendario de Chamados
+						Status das máquinas
 					</h5>
-
-					<table id="home-listagem-chamados" class="home-listagem-chamados table">
+					<table id="home-listagem-maquinas" class="home-listagem-maquinas table">
 						<thead class="thead-dark">
 							<tr>
-								<th scope="col">Data/Hora</th>
-								<th scope="col">Id do equipamento</th>
+								<th scope="col">ID</th>
+								<th scope="col">Tipo</th>
 								<th scope="col">Status</th>
+								<th scope="col">IP Publico</th>
 								<th scope="col">Estado</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
-								<th scope="row">29/04/2024 09:32:22</th>
-								<td>1</td>
-								<td>Running</td>
+								<th scope="row">1</th>
+								<td>t2.micro</td>
+								<td>running</td>
+								<td>54.123.45.67</td>
 								<td>
 									<i class="bi bi-check-circle-fill" style="color: green"></i>
 								</td>
 							</tr>
 							<tr>
-								<th scope="row">29/04/2024 09:32:22</th>
-								<td>2</td>
-								<td>Running</td>
+								<th scope="row">2</th>
+								<td>t2.micro</td>
+								<td>running</td>
+								<td>54.123.45.67</td>
 								<td>
-									<i class="bi bi-check-circle-fill" style="color: green"></i>
+									<i class="bi bi-exclamation-triangle-fill" style="color: goldenrod"></i>
 								</td>
 							</tr>
 							<tr>
-								<th scope="row">29/04/2024 09:32:22</th>
-								<td>3</td>
-								<td>Stopped</td>
+								<th scope="row">3</th>
+								<td>t2.micro</td>
+								<td>running</td>
+								<td>54.123.45.67</td>
 								<td>
 									<i class="bi bi-exclamation-octagon-fill" style="color: red"></i>
 								</td>
 							</tr>
 							<tr>
-								<th scope="row">29/04/2024 09:32:22</th>
-								<td>4</td>
-								<td>Running</td>
+								<th scope="row">4</th>
+								<td>t2.micro</td>
+								<td>running</td>
+								<td>54.123.45.67</td>
 								<td>
 									<i class="bi bi-check-circle-fill" style="color: green"></i>
 								</td>
 							</tr>
 							<tr>
-								<th scope="row">29/04/2024 09:32:22</th>
-								<td>5</td>
-								<td>Running</td>
+								<th scope="row">5</th>
+								<td>t2.micro</td>
+								<td>running</td>
+								<td>54.123.45.67</td>
 								<td>
 									<i class="bi bi-check-circle-fill" style="color: green"></i>
 								</td>
 							</tr>
 							<tr>
-								<th scope="row">29/04/2024 09:32:22</th>
-								<td>6</td>
-								<td>Running</td>
+								<th scope="row">6</th>
+								<td>t2.micro</td>
+								<td>running</td>
+								<td>54.123.45.67</td>
 								<td>
 									<i class="bi bi-check-circle-fill" style="color: green"></i>
 								</td>
 							</tr>
 							<tr>
-								<th scope="row">29/04/2024 09:32:22</th>
-								<td>7</td>
-								<td>Running</td>
+								<th scope="row">7</th>
+								<td>t2.micro</td>
+								<td>running</td>
+								<td>54.123.45.67</td>
 								<td>
 									<i class="bi bi-check-circle-fill" style="color: green"></i>
 								</td>
 							</tr>
 							<tr>
-								<th scope="row">29/04/2024 09:32:22</th>
-								<td>8</td>
-								<td>Running</td>
+								<th scope="row">8</th>
+								<td>t2.micro</td>
+								<td>running</td>
+								<td>54.123.45.67</td>
 								<td>
 									<i class="bi bi-check-circle-fill" style="color: green"></i>
 								</td>
@@ -337,502 +235,21 @@
 						</tbody>
 					</table>
 				</div>
-			</div>
-		</div>
-		<div class="content registro row d-none">
-			<nav class="menu-aparelhos navbar navbar-dark">
-				<ul class="lista-aparelhos navbar-nav">
-					<li class="aparelho nav-item dropdown">
-						<a class="aparelho-info nav-link dropdown-toggle" value="8966F" href="#" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false">
-							<i class="bi bi-laptop"></i>
-							Notebook 8966F
-						</a>
-						<ul class="aparelho-medicoes dropdown-menu">
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Visão Geral</a>
-							</li>
-							<li>
-								<hr class="dropdown-divider" />
-							</li>
-							<li><a class="dropdown-item text-white-50" href="#">CPU</a></li>
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Memória</a>
-							</li>
-							<li><a class="dropdown-item text-white-50" href="#">RAM</a></li>
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Disco</a>
-							</li>
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Bateria</a>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<hr class="dropdown-divider" />
-					</li>
-					<li class="aparelho nav-item dropdown">
-						<a class="aparelho-info nav-link dropdown-toggle" href="#" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false">
-							<i class="bi bi-laptop"></i>
-							Notebook 7362B
-						</a>
-						<ul class="aparelho-medicoes dropdown-menu">
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Visão Geral</a>
-							</li>
-							<li>
-								<hr class="dropdown-divider" />
-							</li>
-							<li><a class="dropdown-item text-white-50" href="#">CPU</a></li>
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Memória</a>
-							</li>
-							<li><a class="dropdown-item text-white-50" href="#">RAM</a></li>
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Disco</a>
-							</li>
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Bateria</a>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<hr class="dropdown-divider" />
-					</li>
-					<li class="aparelho nav-item dropdown">
-						<a class="aparelho-info nav-link dropdown-toggle" href="#" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false">
-							<i class="bi bi-laptop"></i>
-							Notebook 3456C
-						</a>
-						<ul class="aparelho-medicoes dropdown-menu">
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Visão Geral</a>
-							</li>
-							<li>
-								<hr class="dropdown-divider" />
-							</li>
-							<li><a class="dropdown-item text-white-50" href="#">CPU</a></li>
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Memória</a>
-							</li>
-							<li><a class="dropdown-item text-white-50" href="#">RAM</a></li>
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Disco</a>
-							</li>
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Bateria</a>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<hr class="dropdown-divider" />
-					</li>
-					<li class="aparelho nav-item dropdown">
-						<a class="aparelho-info nav-link dropdown-toggle" href="#" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false">
-							<i class="bi bi-laptop"></i>
-							Notebook 1243D
-						</a>
-						<ul class="aparelho-medicoes dropdown-menu">
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Visão Geral</a>
-							</li>
-							<li>
-								<hr class="dropdown-divider" />
-							</li>
-							<li><a class="dropdown-item text-white-50" href="#">CPU</a></li>
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Memória</a>
-							</li>
-							<li><a class="dropdown-item text-white-50" href="#">RAM</a></li>
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Disco</a>
-							</li>
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Bateria</a>
-							</li>
-						</ul>
-					</li>
-					<button class="adicionar-equip btn btn-primary text-white-50" type="submit">
-						Adicionar equipamento
-					</button>
-				</ul>
-			</nav>
-			<div class="graficos-registro">
-				<div class="coluna-grafico esquerda d-flex"
-					style="border-right: 1px solid var(--primary-color) !important">
-					<div class="grafico-01 big-chart-01 card rounded-3">
-						<p id="registro-bateria" class="card-text"></p>
-					</div>
 
-					<div style="border-top: 1px solid var(--primary-color) !important; width: 98%;"></div>
-					<div class="grafico-02 big-chart-01 card rounded-3">
-						<p id="registro-rede" class="card-text"></p>
-					</div>
+
+				<div
+					style="border-top: 1px solid var(--primary-color) !important; width: 98%; align-self: center; opacity: 30%;">
 				</div>
-				<div class="coluna-grafico direita d-flex">
-					<div class="grafico-03 small-chart-01 card rounded-3">
-						<p id="registro-disco" class="card-text"></p>
-					</div>
-
-					<div style="border-top: 1px solid var(--primary-color) !important; width: 100%;"></div>
-					<div class="grafico-04 small-chart-01 card rounded-3">
-						<p id="registro-ram" class="card-text"></p>
-					</div>
-
-					<div style="border-top: 1px solid var(--primary-color) !important; width: 100%;"></div>
-					<div class="grafico-05 small-chart-01 card rounded-3">
-						<p id="registro-cpu" class="card-text"></p>
-					</div>
+				<div class="row card rounded-3" style="height: 38vh; width: 100%">
+					<div id="home-relacao-componentes" class="home-relacao-componentes"></div>
 				</div>
 			</div>
 		</div>
-		<div class="content monitoramento row d-none">
-			<nav class="menu-aparelhos navbar navbar-dark">
-				<ul class="lista-aparelhos navbar-nav">
-					<li class="aparelho nav-item dropdown">
-						<a class="aparelho-info nav-link dropdown-toggle" value="8966F" href="#" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false">
-							<i class="bi bi-laptop"></i>
-							Notebook 8966F
-						</a>
-						<ul class="aparelho-medicoes dropdown-menu">
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Visão Geral</a>
-							</li>
-							<li>
-								<hr class="dropdown-divider" />
-							</li>
-							<li><a class="dropdown-item text-white-50" href="#">CPU</a></li>
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Memória</a>
-							</li>
-							<li><a class="dropdown-item text-white-50" href="#">RAM</a></li>
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Disco</a>
-							</li>
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Bateria</a>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<hr class="dropdown-divider" />
-					</li>
-					<li class="aparelho nav-item dropdown">
-						<a class="aparelho-info nav-link dropdown-toggle" href="#" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false">
-							<i class="bi bi-laptop"></i>
-							Notebook 7362B
-						</a>
-						<ul class="aparelho-medicoes dropdown-menu">
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Visão Geral</a>
-							</li>
-							<li>
-								<hr class="dropdown-divider" />
-							</li>
-							<li><a class="dropdown-item text-white-50" href="#">CPU</a></li>
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Memória</a>
-							</li>
-							<li><a class="dropdown-item text-white-50" href="#">RAM</a></li>
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Disco</a>
-							</li>
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Bateria</a>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<hr class="dropdown-divider" />
-					</li>
-					<li class="aparelho nav-item dropdown">
-						<a class="aparelho-info nav-link dropdown-toggle" href="#" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false">
-							<i class="bi bi-laptop"></i>
-							Notebook 3456C
-						</a>
-						<ul class="aparelho-medicoes dropdown-menu">
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Visão Geral</a>
-							</li>
-							<li>
-								<hr class="dropdown-divider" />
-							</li>
-							<li><a class="dropdown-item text-white-50" href="#">CPU</a></li>
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Memória</a>
-							</li>
-							<li><a class="dropdown-item text-white-50" href="#">RAM</a></li>
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Disco</a>
-							</li>
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Bateria</a>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<hr class="dropdown-divider" />
-					</li>
-					<li class="aparelho nav-item dropdown">
-						<a class="aparelho-info nav-link dropdown-toggle" href="#" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false">
-							<i class="bi bi-laptop"></i>
-							Notebook 1243D
-						</a>
-						<ul class="aparelho-medicoes dropdown-menu">
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Visão Geral</a>
-							</li>
-							<li>
-								<hr class="dropdown-divider" />
-							</li>
-							<li><a class="dropdown-item text-white-50" href="#">CPU</a></li>
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Memória</a>
-							</li>
-							<li><a class="dropdown-item text-white-50" href="#">RAM</a></li>
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Disco</a>
-							</li>
-							<li>
-								<a class="dropdown-item text-white-50" href="#">Bateria</a>
-							</li>
-						</ul>
-					</li>
-					<button class="adicionar-equip btn btn-primary text-white-50" type="submit">
-						Adicionar equipamento
-					</button>
-				</ul>
-			</nav>
-			<div class="graficos-monitoramento">
-				<div class="linha-grafico superior-02 d-flex">
-					<div class="grafico-03 small-chart-02 card rounded-3">
-						<p id="monitoramento-cpu" class="card-text"></p>
-					</div>
-					<div style="
-                border-left: 1px solid var(--primary-color) !important;
-                height: 98%;
-              "></div>
-					<div class="grafico-04 small-chart-02 card rounded-3">
-						<p id="monitoramento-ram" class="card-text"></p>
-					</div>
-					<div style="
-                border-left: 1px solid var(--primary-color) !important;
-                height: 98%;
-              "></div>
-					<div class="grafico-05 small-chart-02 card rounded-3">
-						<p id="monitoramento-disco" class="card-text"></p>
-					</div>
-				</div>
-				<div class="linha-grafico inferior-02 d-flex"
-					style="border-top: 1px solid var(--primary-color) !important">
-					<div class="grafico-01 big-chart-02 card rounded-3">
-						<p id="monitoramento-bateria" class="card-text"></p>
-					</div>
-
-					<div style="border-left: 1px solid var(--primary-color) !important; height: 100%;"></div>
-					<div class="grafico-02 big-chart-02 card rounded-3">
-						<p id="monitoramento-rede" class="card-text"></p>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="content alertas row d-none">
-				<nav class="menu-aparelhos navbar navbar-dark">
-					<ul class="lista-aparelhos navbar-nav">
-						<li class="aparelho nav-item dropdown">
-							<a
-								class="aparelho-info nav-link dropdown-toggle"
-								value="8966F"
-								href="#"
-								role="button"
-								data-bs-toggle="dropdown"
-								aria-expanded="false">
-								<i class="bi bi-laptop"></i>
-								Notebook 8966F
-							</a>
-							<ul class="aparelho-medicoes dropdown-menu">
-								<li>
-									<a class="dropdown-item text-white-50" href="#"
-										>Visão Geral</a
-									>
-								</li>
-								<li>
-									<hr class="dropdown-divider" />
-								</li>
-								<li><a class="dropdown-item text-white-50" href="#">CPU</a></li>
-								<li>
-									<a class="dropdown-item text-white-50" href="#">Memória</a>
-								</li>
-								<li><a class="dropdown-item text-white-50" href="#">RAM</a></li>
-								<li>
-									<a class="dropdown-item text-white-50" href="#">Disco</a>
-								</li>
-								<li>
-									<a class="dropdown-item text-white-50" href="#">Bateria</a>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<hr class="dropdown-divider" />
-						</li>
-						<li class="aparelho nav-item dropdown">
-							<a
-								class="aparelho-info nav-link dropdown-toggle"
-								href="#"
-								role="button"
-								data-bs-toggle="dropdown"
-								aria-expanded="false">
-								<i class="bi bi-laptop"></i>
-								Notebook 7362B
-							</a>
-							<ul class="aparelho-medicoes dropdown-menu">
-								<li>
-									<a class="dropdown-item text-white-50" href="#"
-										>Visão Geral</a
-									>
-								</li>
-								<li>
-									<hr class="dropdown-divider" />
-								</li>
-								<li><a class="dropdown-item text-white-50" href="#">CPU</a></li>
-								<li>
-									<a class="dropdown-item text-white-50" href="#">Memória</a>
-								</li>
-								<li><a class="dropdown-item text-white-50" href="#">RAM</a></li>
-								<li>
-									<a class="dropdown-item text-white-50" href="#">Disco</a>
-								</li>
-								<li>
-									<a class="dropdown-item text-white-50" href="#">Bateria</a>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<hr class="dropdown-divider" />
-						</li>
-						<li class="aparelho nav-item dropdown">
-							<a
-								class="aparelho-info nav-link dropdown-toggle"
-								href="#"
-								role="button"
-								data-bs-toggle="dropdown"
-								aria-expanded="false">
-								<i class="bi bi-laptop"></i>
-								Notebook 3456C
-							</a>
-							<ul class="aparelho-medicoes dropdown-menu">
-								<li>
-									<a class="dropdown-item text-white-50" href="#"
-										>Visão Geral</a
-									>
-								</li>
-								<li>
-									<hr class="dropdown-divider" />
-								</li>
-								<li><a class="dropdown-item text-white-50" href="#">CPU</a></li>
-								<li>
-									<a class="dropdown-item text-white-50" href="#">Memória</a>
-								</li>
-								<li><a class="dropdown-item text-white-50" href="#">RAM</a></li>
-								<li>
-									<a class="dropdown-item text-white-50" href="#">Disco</a>
-								</li>
-								<li>
-									<a class="dropdown-item text-white-50" href="#">Bateria</a>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<hr class="dropdown-divider" />
-						</li>
-						<li class="aparelho nav-item dropdown">
-							<a
-								class="aparelho-info nav-link dropdown-toggle"
-								href="#"
-								role="button"
-								data-bs-toggle="dropdown"
-								aria-expanded="false">
-								<i class="bi bi-laptop"></i>
-								Notebook 1243D
-							</a>
-							<ul class="aparelho-medicoes dropdown-menu">
-								<li>
-									<a class="dropdown-item text-white-50" href="#"
-										>Visão Geral</a
-									>
-								</li>
-								<li>
-									<hr class="dropdown-divider" />
-								</li>
-								<li><a class="dropdown-item text-white-50" href="#">CPU</a></li>
-								<li>
-									<a class="dropdown-item text-white-50" href="#">Memória</a>
-								</li>
-								<li><a class="dropdown-item text-white-50" href="#">RAM</a></li>
-								<li>
-									<a class="dropdown-item text-white-50" href="#">Disco</a>
-								</li>
-								<li>
-									<a class="dropdown-item text-white-50" href="#">Bateria</a>
-								</li>
-							</ul>
-						</li>
-						<button
-							class="adicionar-equip btn btn-primary text-white-50"
-							type="submit">
-							Adicionar equipamento
-						</button>
-					</ul>
-				</nav>
-				<div class="graficos-alertas">
-					<div class="linha-grafico superior-02 d-flex">
-						<div class="grafico-03 small-chart-02 card rounded-3">
-							<p id="monitoramento-cpu" class="card-text"></p>
-						</div>
-						<div
-							style="
-								border-left: 1px solid var(--primary-color) !important;
-								height: 98%;
-							"></div>
-						<div class="grafico-04 small-chart-02 card rounded-3">
-							<p id="monitoramento-ram" class="card-text"></p>
-						</div>
-						<div
-							style="
-								border-left: 1px solid var(--primary-color) !important;
-								height: 98%;
-							"></div>
-						<div class="grafico-05 small-chart-02 card rounded-3">
-							<p id="monitoramento-disco" class="card-text"></p>
-						</div>
-					</div>
-					<div
-						class="linha-grafico inferior-02 d-flex"
-						style="border-top: 1px solid var(--primary-color) !important">
-						<div class="grafico-01 big-chart-02 card rounded-3">
-							<p id="monitoramento-bateria" class="card-text"></p>
-						</div>
-						<div
-							style="
-								border-left: 1px solid var(--primary-color) !important;
-								height: 98%;
-							"></div>
-						<div class="grafico-02 big-chart-02 card rounded-3">
-							<p id="monitoramento-rede" class="card-text"></p>
-						</div>
-					</div>
-				</div>
-			</div>
 	</div>
 </body>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../js/dashboard.js"></script>
+
 
 </html>
