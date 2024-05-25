@@ -1,0 +1,367 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+  font-size: 10px;
+  --border-color: rgba(23, 25, 93, 0.35);
+  --primary-color: #17195d;
+  --secondary-color: hsl(238, 60%, 33%);
+  --tertiary-color: hsl(238, 60%, 43%);
+  --quaternary-color: #f0f0f8;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  text-decoration: none;
+  outline: none;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  height: 98vh;
+  width: 98vw;
+}
+
+.col,
+.row {
+  margin: 0 !important;
+  padding: 0 !important;
+  flex: none !important;
+}
+.body-loading{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+
+}
+.body-container {
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+
+.body-container .menu-home {
+  background-color: var(--primary-color) !important;
+  width: 12.5%;
+  height: 100%;
+  padding: 1vh 0vw;
+}
+.home-hidden-text{
+  display: block;
+}
+
+.body-container .menu {
+  background-color: var(--primary-color) !important;
+  width: 3.5%;
+  height: 100%;
+  padding: 1vh 0vw;
+}
+.hidden-text{
+  display: none;
+}
+
+.navbar .logotype {
+  height: 4vh;
+  margin: 1vh 0vw;
+  align-self: start;
+  padding-left: 12px;
+}
+
+.nav {
+  min-height: 25vh;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.navbar .nav .active {
+  color: rgba(var(--bs-light-rgb), var(--bs-text-opacity)) !important;
+  text-decoration: underline !important;
+}
+
+.nav-link {
+  padding-left: 12px !important;
+  border-left: 4px solid white;
+}
+
+.navbar .nav .nav-link:hover {
+  background-color: var(--secondary-color) !important;
+  border-color: var(--secondary-color) !important;
+  cursor: pointer;
+}
+
+.nav-link i {
+  border-radius: 50%;
+  padding-right: 1vw;
+  font-size: 1.6rem;
+}
+
+.nav a i {
+  padding-left: 0.3vw;
+}
+
+.dropup {
+  width: 100%;
+}
+
+.dropup button {
+  min-height: 8vh;
+  width: 100%;
+  padding: 0 3%;
+  margin: 0;
+  justify-content: space-evenly;
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+  color: var(--bs-gray-200) !important;
+}
+
+.dropup button:hover {
+  background-color: var(--secondary-color) !important;
+  border-color: var(--secondary-color) !important;
+}
+
+.dropup button .user-icon {
+  border-radius: 50%;
+  padding: 0;
+  font-size: 1.7rem;
+  width: auto;
+}
+
+.dropup button div {
+  width: auto;
+  padding: 0;
+}
+
+.dropup button div p {
+  margin: 0;
+}
+
+.dropup button div .user-name {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.dropup button div .user-mail {
+  font-size: 1rem;
+}
+
+.dropup ul {
+  min-width: 40% !important;
+  height: auto;
+  margin-left: 33%;
+  padding: 1vh 3%;
+  background-color: var(--primary-color) !important;
+  border: 2px outset var(--quaternary-color) !important;
+}
+
+.dropup ul:active {
+  border: 2px inset var(--quaternary-color) !important;
+}
+
+.dropup ul li {
+  align-items: center;
+  height: 4vh;
+  width: 100%;
+  padding-right: 12px;
+  color: var(--quaternary-color) !important;
+}
+
+.dropup ul li:hover {
+  background-color: var(--secondary-color) !important;
+  border-color: var(--secondary-color) !important;
+}
+
+.dropup ul li i {
+  margin-right: 0.5vw;
+}
+
+.content {
+  width: 87.5% !important;
+  height: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.card {
+  border:  none !important;
+  padding: 0 !important;
+}
+.card div{
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.home .first-column p, li{
+  font-size: 1.2rem;  
+}
+
+.home li::before {
+  color: red;
+}
+
+.welcome-img {
+  height: 100%;
+  width: auto !important;
+  position: absolute;
+  right: 0;
+}
+
+.home-relacao-componentes,
+.home-relacao-maquinas,
+#home-relacao-chamados,
+.home-relacao-maquinas-novas,
+.home-listagem-maquinas,
+.home-listagem-chamados {
+  width: 100% !important;
+  height: 100% !important;
+  max-height: 100% I !important;
+}
+
+.card-listagem-maquinas,
+.card-listagem-chamados,
+.card-listagem-alertas{
+  text-align: center;
+  overflow-y: scroll;
+}
+
+
+.card-listagem-maquinas{
+  width: 100%;
+  height: 35vh;
+  overflow-y: scroll;
+  padding: 1vh 1vw !important;
+  margin-top: 2px !important
+}
+
+tr{
+  text-align: center;
+}
+
+.registro,
+.monitoramento,
+.alertas {
+  width: 96.5% !important;
+}
+
+.menu-aparelhos {
+  width: 15% !important;
+  height: 100%;
+  padding: 1vh 1vw !important;
+  font-size: 1.2rem;
+  background-color: var(--tertiary-color) !important;
+}
+
+.lista-aparelhos {
+  width: 100%;
+  height: 100%;
+  padding: 1vh 0;
+  font-size: 1.2rem;
+}
+
+.aparelho-medicoes {
+  background-color: var(--primary-color) !important;
+}
+
+.aparelho-medicoes li a:hover {
+  background-color: var(--secondary-color) !important;
+  color: var(--bs-nav-link-hover-color) !important;
+}
+
+.dropdown-divider {
+  border-top: 1px solid var(--quaternary-color) !important;
+}
+
+.adicionar-equip {
+  position: fixed;
+  bottom: 1.5%;
+  height: 5vh;
+  width: 12.5%;
+  font-size: 1.1rem !important;
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+
+.adicionar-equip:hover {
+  color: var(--quaternary-color) !important;
+}
+
+.graficos-registro,
+.graficos-monitoramento,
+.graficos-alertas {
+  width: 85% !important;
+  height: 100%;
+  display: flex;
+}
+
+.graficos-monitoramento {
+  flex-direction: column;
+}
+
+.linha-grafico {
+  width: 96% !important;
+  height: 49%;
+  margin: 2vh 1vw;
+  justify-content: space-evenly;
+}
+
+.coluna-grafico {
+  flex-direction: column;
+  width: 49%;
+  height: 96%;
+  margin: 2vh 1vw;
+  justify-content: space-evenly;
+}
+
+.big-chart-01 {
+  height: 49% !important;
+  padding: 1%;
+}
+
+.small-chart-01 {
+  max-height: 30%;
+  padding: 1%;
+}
+
+.esquerda {
+  width: 60% !important;
+  margin-right: 0;
+  padding-right: 1vw;
+}
+
+.direita {
+  width: 40% !important;
+}
+
+.superior-02 {
+  width: 100%;
+  height: 44%;
+  padding: 1vh 1vw;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.inferior-02 {
+  width: 100%;
+  height: 53%;
+  padding: 3vh 1vw;
+  margin-top: 0;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.big-chart-02 {
+  width: 50%;
+  height: 100% !important;
+  padding: 1% !important;
+}
+
+.small-chart-02 {
+  width: 30%;
+  padding: 1%;
+}
