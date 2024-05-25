@@ -48,6 +48,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `circuit_safe`.`usuario`
 -- -----------------------------------------------------
+
 CREATE TABLE IF NOT EXISTS `circuit_safe`.`usuario` (
   `id_usuario` INT NOT NULL AUTO_INCREMENT,
   `email` VARCHAR(45) NULL,

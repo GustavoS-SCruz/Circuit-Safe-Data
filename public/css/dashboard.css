@@ -365,3 +365,65 @@ tr{
   width: 30%;
   padding: 1%;
 }
+
+.formulario-maquinas{
+  background-color: #222584;
+  margin: auto;
+  width: 60%;
+  height: 70%;
+  border-radius: 5px;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.299);
+}
+.titulo-formulario-maquinas{
+  width: 100%;
+  height: 30%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+}
+.titulo-formulario-maquinas h1{
+  font-size: 25px;
+  color: white;
+  margin: auto;
+  font-weight: bolder;
+  width: fit-content;
+
+}
+.conteudo-formulario-maquinas{
+  background-color: #f0f0f8;
+  height: 70%;
+  border-radius: 0 0 5px 5px;
+
+}
+.conteudo-formulario-maquinas img{
+  width: 50% ;
+  margin: 3% 25% 0%;
+}
+.conteudo-formulario-maquinas div{
+display: flex;
+padding: 10px;
+width: 100%;
+flex-wrap: wrap;
+
+}
+.conteudo-formulario-maquinas div div{
+  width: 50%;
+  }
+.conteudo-formulario-maquinas div div input{
+  width: -moz-available;
+  height: 20px;
+  border-radius: 4px;
+  }
+.conteudo-formulario-maquinas div div select{
+  width: -moz-available;
+  height: 20px;
+  border-radius: 4px;
+  }
+.conteudo-formulario-maquinas button{
+margin: 10px 34%; 
+width: 32%;
+height: 40px;
+background-color: #17195d;
+color: white;
+border-radius:10px;
+}
